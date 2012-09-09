@@ -1,0 +1,17 @@
+markdown: rdiscount
+auto: true
+permalink: pretty
+exclude:
+  - Rakefile
+  - pids
+server: true
+
+author: 
+    name: François Monniot
+    email: francoismonniot@gmail.com
+    github: francoismonniot
+    twitter: fmonniot
+    gplusto: fmonniot
+    
+    #75 characters max
+    description: This is yet a short description of myself. Try to keep it short.
