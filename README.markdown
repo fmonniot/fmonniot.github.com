@@ -1,3 +1,5 @@
+My personal website, visible at http://fmonniot.github.com
+
 Usage
 =====
 To deploy:
