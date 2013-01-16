@@ -4,11 +4,14 @@ permalink: pretty
 exclude:
   - Rakefile
   - pids
+  - README.md
 server: true
+paginate: 3 //the number of post per page
+lang: fr
 
 author: 
     name: François Monniot
-    email: francoismonniot@gmail.com
+    email: francois@monniot.eu
     github: fmonniot
     twitter: fmonniot
     gplusto: fmonniot
