@@ -1,10 +1,3 @@
-desc 'deploy to server via rsync'
-task :deploy do
-  # uploads ALL files b/c I often do site-wide changes and prefer overwriting all
-  puts 'deploying'
-  sh "rsync -rtzh --progress --delete _site/ --rsh='ssh -pXX' YOUR_SERVER:path/to/blog"
-  puts 'done!'
-end
 
 desc 'create new post or bit. args: type (post, bit), title, future (# of days)'
 # rake new future=0 title="New post title goes here" slug="slug-override-title"
