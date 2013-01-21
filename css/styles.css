@@ -1,7 +1,13 @@
+/* Main font */
 @import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
-@import "social-buttons/auth-buttons.css";
-@import "pygments.css"
 
+/* Social buttons (github,twitter, etc...) */
+@import "social-buttons/auth-buttons.css";
+
+/* Syntax coloration */
+@import "pygments.css";
+
+/* Generals tag */
 html {
     height:100%; }
 body {
@@ -10,7 +16,6 @@ body {
     margin: 0;
     height:100%;
     font:14px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif; }
-
 h1, h2, h3, h4, h5, h6 {
   line-height:1.1;
   font-family:  Lato, "Helvetica Neue", Helvetica, Arial, sans-serif; }
@@ -20,19 +25,25 @@ h2 {
   color:#393939; }
 h3, h4, h5, h6 {
   color:#494949; }
-
 a {
     color: black;
     text-decoration:none; }
 a:hover {
     color: #44D; }
 
+/* Wrapper */
 .wrapper {
     margin: 0 auto;
     width: 910px;
     min-height: 100%;
 }
-    
+#container {
+    margin-left:110px;
+    background-color: #FFF;
+    box-shadow: 0 0 1em;
+    min-height:100%; }
+
+/* Navigation bar */
 nav#top {
     width:104px;
     padding: 2px;
@@ -55,12 +66,7 @@ nav#top li:last-child {
 nav#top footer {
     margin-top:0.5em; }
 
-#container {
-    margin-left:110px;
-    background-color: #FFF;
-    box-shadow: 0 0 1em;
-    min-height:100%; }
-
+/* Page header */
 header .left-panel {
     width: 75%;
     float:left;
@@ -91,6 +97,7 @@ header ul {
 header ul li {
     height:30px; }
 
+/* Page body */
 section {
     padding: 1%;
     clear:both; }
@@ -103,12 +110,13 @@ p {
     text-align:justify; }
 
 
+/* Extra for curiculum vitae */
 section#cv h3, section#cv p {
     margin:0; }
 section#cv .row-fluid div {
     display:inline-block; }
 section#cv .row-fluid .span2{
-    width:18%;
+    width:17%;
     margin-right:2%;
     text-align:right;
     vertical-align:top; }
@@ -124,9 +132,53 @@ section#cv header .span2 {
     min-height:5px; }
 section#cv article {
     margin-bottom: 1em; }
-    
-    
+
+/* Page footer */
 footer#bottom {
     margin: 1em 1em 0 1em; }
 footer a{
     font-weight:100; }
+
+/* A little bit of responsive design */
+
+@media (max-width: 923px) {
+    /* Change position of navigation bar */
+    nav#top {
+        position:static;
+        width: 100%;
+        border:none;
+        padding:2px 0 0.5em 0; }
+    nav#top ul,nav#top ul li,nav#top footer {
+        display:inline-block; }
+    nav#top footer {
+        margin:0; }
+    nav#top a {
+        margin-right: 0.5em; }
+    
+    /* Remove margin and expand the wrapper */
+    .wrapper {
+        width: 100%;
+        margin: 0;
+    }
+    #container {
+        margin-left:0; }
+}
+
+@media (max-width: 805px) {
+    /* Change position of "follow" */
+    header .left-panel {
+        float:none;
+        position:static;
+        width:100%; }
+    header h1 {
+        text-align:center;
+        margin:0; }
+    header ul {
+        float:none;
+        width:100%;
+        text-align:center; }
+    header ul li{
+        display:inline-block;
+        height:24px; }
+}
+
