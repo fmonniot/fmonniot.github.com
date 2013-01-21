@@ -178,7 +178,6 @@ footer a{
         width:100%;
         text-align:center; }
     header ul li{
-        display:inline-block;
-        height:24px; }
+        display:inline-block; }
 }
 
