@@ -181,3 +181,9 @@ footer a{
         display:inline-block; }
 }
 
+@media (max-width: 500px) {
+    /* Change some alignments */
+    section#cv .row-fluid .span2{
+        text-align:left; }
+}
+
