@@ -15,12 +15,12 @@ body {
     padding: 0;
     margin: 0;
     height:100%;
-    font:14px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif; }
+    font:1em/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif; }
 h1, h2, h3, h4, h5, h6 {
   line-height:1.1;
   font-family:  Lato, "Helvetica Neue", Helvetica, Arial, sans-serif; }
 h1 {
-  font-size:28px; }
+  font-size:2em; }
 h2 {
   color:#393939; }
 h3, h4, h5, h6 {
@@ -74,7 +74,7 @@ header .left-panel {
     left:7%; }
 header h1 {
     margin:0 1.07em 0 0;
-    font-size: 45pt;
+    font-size: 4em;
     text-align:right;
     color: #444;
     font-weight:100; }
