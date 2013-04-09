@@ -18,3 +18,7 @@ author:
     
     #75 characters max
     description: This is yet a short description of myself. Try to keep it short.
+
+site:
+    name: "François Monniot"
+    url:  "http://francois.monniot.eu/"

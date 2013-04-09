@@ -1,6 +1,6 @@
 source :rubygems
 
-#ruby=ruby-1.9.1-p431@jekyll
+#ruby=ruby-1.9.3-p125@jekyll
 
 gem 'albino', '1.3.3'
 gem 'chronic', '0.7.0'
