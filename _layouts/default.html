@@ -3,78 +3,74 @@ title: François Monniot
 ---
 
 <!DOCTYPE html>
-  <html lang="fr">
-    <head>
-      <!-- meta -->
-      <meta charset="utf-8" />
-      <meta name="keywords" content="" />
-      <meta name="description" content="" />
-      <meta name="author" content="{{ site.author.name }}">
-      <meta name="viewport" content="width=device-width">
-      
-        
-      <!-- include -->
-      <link rel="stylesheet" href="/css/styles.css" type="text/css" />
-      <link rel="icon" href="favicon.ico" type="image/x-icon" />
-      <link rel="alternate" type="application/rss+xml" href="/atom.xml" title="RSS feed">
- 
-      <title>François Monniot</title>
-    </head>
-    <body><div class="wrapper">
-<!--
-        <nav id="top">
-            <ul>
-                {% if paginator.total_pages > 0 %}<li><a href="/index.html#publications">Publications</a></li>{% endif %}
-                <li><a href="/index.html#cv">Curiculum Vitæ</a></li>
-            </ul>
-            
-            <footer>
-		        <a href="http://feeds.feedburner.com/fmonniot">RSS Feed</a>
-            </footer>
-        </nav>
--->
+<html lang="fr">
+  <head>
+    <!-- meta -->
+    <meta charset="utf-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="{{ site.author.name }}">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- include -->
+    <link href="http://fonts.googleapis.com/css?family=Roboto:100,300,300italic,400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css" type="text/css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="alternate" type="application/rss+xml" href="/atom.xml" title="RSS feed">
+
+    <title>François Monniot</title>
+  </head>
+  <body>
+
+  <header id="top">
+    <!-- <a href="https://github.com/fmonniot/fmonniot.github.com" class="fork_me">Fork me on Github</a> -->
+    <img src="" class="logo" />
+    <h1>François Monniot</h1>
+    <nav class="menu">
+      <ul>
+        <li>
+          <a href="https://github.com/{{ site.author.github }}" class="btn-social btn-github" href="#"></a>
+          <a href="https://www.twitter.com/{{ site.author.twitter }}" class="btn-social btn-twitter" href="#"></a>
+          <a href="http://gplus.to/{{ site.author.gplusto }}" class="btn-social btn-google" href="#"></a>
+          <a href="mailto:{{ site.author.email }}" class="btn-social btn-mail" href="#"></a>
+        </li>
+        <li>Home</li>
+        <li>CV (FR)</li>
+        <li>Resume (EN)</li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="wrapper">
+    {{ content }}
     
-        <div id="container">
-            
-            <header>
-                <div class="left-panel">
-                    <h1>François Monniot</h1>
-                    <em>{% comment %}Subtitle{% endcomment %}</em>
-                </div>
-                <ul>
-	                <li>
-	                    <a href="https://github.com/{{ site.author.github }}" class="btn-social btn-github" href="#"> GitHub </a>
-                    </li>
-		            <li>
-	                    <a href="https://www.twitter.com/{{ site.author.twitter }}" class="btn-social btn-twitter" href="#"> Twitter </a>
-		            </li>
-		            <li>
-	                    <a href="http://gplus.to/{{ site.author.gplusto }}" class="btn-social btn-google" href="#"> Google+ </a>
-		            </li>
-		            <li>
-	                    <a href="mailto:{{ site.author.email }}" class="btn-social btn-mail" href="#"> {{ site.author.email }} </a>
-		            </li>
-		        </ul>
-            </header>
-            
-            {{ content }}
-            
-            
-            <footer id="bottom">
-                <a href="https://github.com/fmonniot/fmonniot.github.com">Fork me on Github</a>
-		        <span style="float:right;">par F. Monniot</span>
-            </footer>
-        </div>
-        <script type="text/javascript">
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-38786904-1']);
-	  _gaq.push(['_setDomainName', 'monniot.eu']);
-	  _gaq.push(['_trackPageview']);
-	  (function() {
-	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
-	</script>
-    </div></body>
+    {% if paginator.total_pages > 1 %}
+    <nav>
+    {% if paginator.previous_page %}
+      <a href="{{ site.url }}page{{paginator.previous_page}}">Previous</a>
+    {% else %}
+      <span>Previous</span>
+    {% endif %}
+    {% if paginator.next_page %}
+      <a href="{{ site.url }}page{{paginator.next_page}}" class="right">Next</a>
+    {% else %}
+      <span class="right">Next</span>
+    {% endif %}
+    </nav>
+    {% endif %}
+  </div>
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38786904-1']);
+    _gaq.push(['_setDomainName', 'monniot.eu']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  </body>
 </html>

@@ -2,14 +2,15 @@
 layout: default
 lang: fr
 ---
-<section class="post">
-    <h2>{{ page.title }}</h2>
-  
-    <div class="body">
-        {{ content }}
-    </div>
-    
+<article>
+  <div class="content">
+    <header><a href="{{ page.url }}"><h2>{{ page.title }}</h2></a></header>
+    <section>
+      {{ content }}
+    </section>
     <footer>
-        Posté le <a href="{{ page.url }}">{{ page.date | date_to_long_string }}</a>
+      <a href="{{ page.url }}">{{ page.date | date_to_long_string }}</a>
+      {% comment %} If category or tag , a paragraphe can be insert here {% endcomment %}
     </footer>
-</section>
+  </div>
+</article>

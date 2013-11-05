@@ -1,6 +1,5 @@
 *~
 _site/
-Gemfile.lock
 
 # Latex temp files
 *.aux
