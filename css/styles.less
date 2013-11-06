@@ -3,7 +3,8 @@
 //
 @color-article-footer:      #9c9c9c;
 @color-background:          #dedede;
-@color-cv-title:            #005c8c;    
+@color-blockquote:          #eeeeee;
+@color-cv-title:            #005c8c;
 @color-cv-separator:        @color-cv-title + #111;
 @color-footer:              #9a9a9a;
 @color-footer-article:      #cacaca;
@@ -56,6 +57,11 @@ body {
   margin: 0;
   padding: 0;
 }
+blockquote {
+  border-left: 5px solid @color-blockquote;
+  margin: 0 0 20px;
+  padding: 10px 20px;
+}
 
 a {
   text-decoration: none;
@@ -65,7 +71,8 @@ a {
 p {
   font-size: 1em;
   font-weight: 300;
-  margin: 0 0 1em 0;
+  margin: 0 0 1em;
+  line-height: 1.3em;
 }
 
 strong { font-weight: 500; }
@@ -112,39 +119,54 @@ table {
 //
 
 // Site Header definition
-header#top {
+header.main {
   background: @color-header-background;
   box-shadow: 0 2px 6px @color-header-shadow;
   margin-bottom: 1em;
+  height: 60%;
+  width: 280px;
+  
+  position: fixed;
+  padding: 10% 0;
+  text-align: center;
 
-  .wrapper { width: 70%; }
+  .logo {
+    display: inline-block;
+    height: 90px;
+    width:  90px;
+    box-shadow: 0 2px 6px @color-header-shadow;
+    border-radius: 50%;
+    margin-bottom: 1em;
+  }
+
+  .follows {
+    margin: 1em 0;
+  }
 
   ul {
-    float: right;
     list-style-type: none;
     margin: 0;
     padding: 0;
-
-    li {
-      float: right;
-
-      a {
-        display: inline-block;
-        font-size: 1em;
-        .link-color(@color-link, @color-link-hover);
-        padding: 0.5em;
-      }
-    }
   }
+
+  a {
+    display: inline-block;
+    font-size: 1em;
+    padding: 0.5em;
+  }
+
+  .btn-social { padding:0em; }
+  .btn-github:before,
+  .btn-twitter:before,
+  .btn-google:before {
+    margin: 0;
+  }
+
+  .btn-google {
+    border-color: #3079ED + #333;
+  }
+
 }
-
-// Navigation Definition
-nav {
-  padding: 0 8% 1em;
-
-  span { color: @color-link-disabled; }
-};
-
 
 // Footer Definition
 footer {
@@ -193,40 +215,41 @@ article {
 
 // Curiculum Vitae & Resume
 .cv {
-  h3, section#cv p {
-    margin:0;
+  h3 {
+    margin: 0;
   }
 
   .span2{
-    width:17%;
-    margin-right:2%;
-    text-align:right;
-    vertical-align:top;
-    display:inline-block;
+    width: 17%;
+    margin-right: 2%;
+    text-align: right;
+    vertical-align: top;
+    display: inline-block;
+    line-height: 1.3em;
   }
 
   .span10{
-    width:79%;
-    display:inline-block;
+    width: 79%;
+    display: inline-block;
   }
 
   header {
-    margin-bottom:0em;
+    margin-bottom: 0em;
     
     h3 { 
       color: @color-cv-title;
     }
     .span2 {
-      background:none repeat scroll 0 0 @color-cv-separator;
-      margin-top:1em;
-      min-height:5px;
+      background: none repeat scroll 0 0 @color-cv-separator;
+      margin-top: 1em;
+      min-height: 5px;
     }
   }
 
   section {
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
 
-    > div { margin-bottom: 0.5em; }
+    > p { margin-bottom: 0.5em; }
   }
 
 }
