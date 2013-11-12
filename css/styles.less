@@ -107,9 +107,11 @@ table {
 //
 
 .wrapper {
-  margin: 0 auto;
-  padding: 1em;
-  width: 70%;
+  padding-left: 280px;
+  width: 100%;
+  max-width: 1400px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .right { float: right; }
@@ -254,59 +256,4 @@ article {
 
 }
 
-//
-// Responsive design
-//
-
-// Tablet landscape
-@media screen and (max-width: 1024px) {
-  .wrapper { width: 94%; }
-}
-
-//Small tablet landscape and tablet portrait
-@media screen and (max-width: 800px) {
-
-  header#top { margin-bottom: 0; }
-  .wrapper article { padding: 1em; }
-}
-
-// Mobile landscape
-@media screen and (max-width: 480px) {
-  header#top {
-    .wrapper {
-      padding: 0.2em 0;
-      width: 98%;
-
-      ul a {
-        padding-right: 0;
-      }
-    }
-  }
-
-  .wrapper {
-    padding: 0;
-    width: 100%;
-
-    article .content {
-      padding: 0.5em;
-
-      section { padding: 0 0.5em; }
-    }
-  }
-}
-
-// Mobile portrait
-@media screen and (max-width: 320px) {
-
-  .wrapper article{
-    padding: 1em 0;
-
-    .content {
-      border-left: none;
-      border-radius: 0;
-      border-right: none;
-
-      section { padding: 0; }
-    }
-  }
-}
+@import "media-queries.less";
