@@ -19,13 +19,15 @@
 @screen-md-max: (@screen-lg-min - 1);
 
 
-// Medium screen (<= 1199)
+// Medium screen
 @media (max-width: @screen-md-max) {
   article { padding: 1em }
 }
 
-// Small screen (<= 991)
+// Small screen
 @media (max-width: @screen-sm-max) {
+
+  // Show main header as top bar
   header.main {
     position: static;
     width: 80%;
@@ -39,7 +41,11 @@
 
     h1 { padding-left: 100px; }
 
-    ul { text-align: center; padding-left: 100px; }
+    ul {
+      text-align: center;
+      padding-left: 100px;
+    }
+
     li {
       display: inline;
     }
@@ -57,7 +63,7 @@
   }
 }
 
-// Extra small screen (<= 767)
+// Extra small screen
 @media (max-width: @screen-xs-max) {
   .wrapper {
     padding: 0;
@@ -71,8 +77,9 @@
 }
 
 // Is there really so small screen ?
-@media (max-width: 432px) {
+@media (max-width: @screen-xs-min) {
   header .right { float: none; }
+
   header.main {
     h1 { padding-left: 0; }
     ul { padding-left: 0; }
