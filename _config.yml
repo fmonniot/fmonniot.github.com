@@ -1,21 +1,19 @@
 markdown: rdiscount
-auto: true
 permalink: pretty
 exclude:
   - Rakefile
   - pids
   - README.md
-server: true
-paginate: 3 //the number of post per page
+paginate: 3
 lang: fr
 
-author: 
+author:
     name: François Monniot
     email: francois@monniot.eu
     github: fmonniot
     twitter: fmonniot
     gplusto: fmonniot
-    
+
     #75 characters max
     description: This is yet a short description of myself. Try to keep it short.
 
