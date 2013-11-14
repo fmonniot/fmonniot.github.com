@@ -1,1 +1,39 @@
-header.main { display: none; }
+body { background: none; text-indent: 0;}
+
+header.main {
+  display: none;
+  box-shadow: none;
+}
+
+.no-print { display: none; }
+
+.cv {
+  .span2{
+    background: violet;
+  }
+
+  .span10{
+    background: pink;
+  }
+
+  header {
+    background: lightgreen;
+    .span2 {
+      border: 1px solid violet;
+      margin-left: 0;
+    }
+  }
+}
+
+.wrapper {
+  padding-left: 0;
+
+  article {
+    padding: 1em;
+
+    .content {
+      background: none;
+      border: none;
+    }
+  }
+}
