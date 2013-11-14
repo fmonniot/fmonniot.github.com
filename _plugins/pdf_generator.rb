@@ -28,6 +28,7 @@ module Jekyll
 
         doc = ::Nokogiri::HTML(page.output)
         doc.xpath('/html/head/link[contains(@type, "text/css")]').each do |elem|
+          next unless elem['media'] =~ /print|all/
           kit.stylesheets << site.source + '/_tmp' + elem['href']
         end
 
