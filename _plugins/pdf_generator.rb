@@ -6,41 +6,39 @@ module Jekyll
     priority :lowest
 
     def generate(site)
-      puts "\n\n"
-      css = {}
 
-      site.static_files.each do |static|
-        next unless static.path.include?('.less') || static.path.include?('.css')
-        
-        parser ||= ::Less::Parser.new({:paths => [File.dirname(static.path)]})  
-        css[static.path] = parser.parse(File.read(static.path)).to_css
+      # Pregenerate stylesheets for importing them in PDF files
+      site.static_files.each do |file|
+        next unless (file.path =~ /.*(less|css)$/)
+        file.write '_tmp'
       end
 
       site.pages.each do |page|
         next unless page.data.has_key?('pdf')
 
+        # Generate the layout of this page
         page.render site.layouts, {"site" => {"posts" => []}}
 
+        # PDFKit.new takes the page HTML and any options for wkhtmltopdf
+        kit = PDFKit.new(page.output, 'page_size' => 'A4',
+                                      'margin-top' => '0.5in',
+                                      'margin-right' => '0.5in',
+                                      'margin-bottom' => '0.5in',
+                                      'margin-left' => '0.5in' )
+
         doc = ::Nokogiri::HTML(page.output)
-
-
-        css_node = ::Nokogiri::XML::Node.new("style", css)
-        css_node['media'] = 'screen'
-
-        doc.css('header') << css_node
-
-        # PDFKit.new takes the HTML and any options for wkhtmltopdf
-        # run `wkhtmltopdf --extended-help` for a full list of options
-        kit = PDFKit.new(page.output, :page_size => 'Letter')
-
+        doc.xpath('/html/head/link[contains(@type, "text/css")]').each do |elem|
+          kit.stylesheets << site.source + '/_tmp' + elem['href']
+        end
 
         # Save the PDF to a file
-        file = kit.to_file('example.pdf')
+        p filename = page.data['pdf'] + '.pdf'
+        kit.to_file(filename)
 
         # Registering the new pdf file
-        #p filename = page.name.gsub(/\.html$/, ".pdf")
-        #site.static_files << StaticFile.new(site, site.source, 'pdf', page.name )
+        site.static_files << StaticFile.new(site, site.source, '', filename )
       end
     end
+
   end
 end
