@@ -1,39 +1,78 @@
-body { background: none; text-indent: 0;}
-
-header.main {
-  display: none;
-  box-shadow: none;
+body {
+  background: none;
+  text-indent: 0;
+  font-size: 10pt;
+  line-height: 11pt;
+  font-family: 'serif';
 }
 
 .no-print { display: none; }
 
-.cv {
-  .span2{
-    background: violet;
-  }
+.wrapper {
+  padding-left: 0;
+}
 
-  .span10{
-    background: pink;
-  }
+/*
+<address class="vcard only-print">
+    <p class="adr">
+        <span class="street-address">6 rue de la République</span><br>
+        <span class="postal-code">60600</span>
+        <span class="country-name">Erquery</span>
+    </p>
+    <p class="tel">+33 (0)6 37 18 81 24</p>
+    <p class="email">francoismonniot@gmail.com</p>
+    <p class="note">23 ans, Détenteur du permis B</p>
+    <p class="fn"><a class="url" href="#">François Monniot</a><p>
+    <p class="role">Élève Ingénieur Télécom SudParis<p>
+</address>
+*/
 
-  header {
-    background: lightgreen;
-    .span2 {
-      border: 1px solid violet;
-      margin-left: 0;
+@vcard-fn: #000;
+@vcard-role: #888;
+@vcard-infos: #888;
+
+.vcard {
+  .fn a{
+    color: @vcard-fn;
+    font-size: 2em;
+    font-style: normal;
+    font-weight: lighter;
+  }
+  .role {
+    color: @vcard-role;
+    font-size: 1.3em;
+  }
+  .adr, .tel, .email, .note {
+    color: @vcard-infos;
+    clear: right;
+    float: right;
+    font-size: 0.9em;
+    margin: 0;
+    text-align: right;
+  }
+}
+
+header.main {
+  display: none;
+}
+
+article {
+  padding: 0;
+
+  .content {
+    background: none;
+    border: none;
+    padding: 0;
+
+    section {
+      padding: 0;
     }
   }
 }
 
-.wrapper {
-  padding-left: 0;
-
-  article {
-    padding: 1em;
-
-    .content {
-      background: none;
-      border: none;
-    }
+.cv {
+  .span10 {
+    margin-bottom: 0;
   }
+  strong { font-weight: bold; }
 }
