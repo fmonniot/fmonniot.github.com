@@ -20,11 +20,12 @@ module Jekyll
         page.render site.layouts, {"site" => {"posts" => []}}
 
         # PDFKit.new takes the page HTML and any options for wkhtmltopdf
-        kit = PDFKit.new(page.output, 'page_size' => 'A4',
+        kit = PDFKit.new(page.output, 'page-size' => 'A4',
                                       'margin-top' => '0.5in',
                                       'margin-right' => '0.5in',
                                       'margin-bottom' => '0.5in',
-                                      'margin-left' => '0.5in' )
+                                      'margin-left' => '0.5in',
+                                      'print-media-type' => true )
 
         doc = ::Nokogiri::HTML(page.output)
         doc.xpath('/html/head/link[contains(@type, "text/css")]').each do |elem|
@@ -33,7 +34,7 @@ module Jekyll
         end
 
         # Save the PDF to a file
-        p filename = page.data['pdf'] + '.pdf'
+        filename = page.data['pdf'] + '.pdf'
         kit.to_file(filename)
 
         # Registering the new pdf file
