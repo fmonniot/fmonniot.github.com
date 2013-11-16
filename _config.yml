@@ -3,7 +3,6 @@ permalink: pretty
 exclude:
   - Rakefile
   - pids
-  - README.md
   - this.sublime-project
   - this.sublime-workspace
   - Gemfile*
