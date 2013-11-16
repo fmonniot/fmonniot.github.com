@@ -6,6 +6,7 @@ exclude:
   - README.md
   - this.sublime-project
   - this.sublime-workspace
+  - Gemfile*
 paginate: 3
 lang: en
 
