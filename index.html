@@ -1,18 +1,31 @@
 ---
 layout: default
 title: François Monniot
-lang: fr
+lang: en
 ---
-            
+
 {% if paginator.total_pages > 0 %}
+<article>
+  <div class="content">
     <section id="publications">
-        <h2>Dernière publications</h2>
+        <h2>Last publications</h2>
         <ul>
         {% for post in paginator.posts %}
-            <li><a href="{{ post.url }}">{{ post.title }} <small>( le {{post.date | date_to_long_string }})</small></a></li>
+            <li><a href="{{ post.url }}">{{ post.title }} <small>( at {{post.date | date_to_long_string }})</small></a></li>
         {% endfor %}
         </ul>
      </section>
+  </div>
+</article>
 {% endif %}
-            
-{% include cv.html %}
+
+<article>
+  <div class="content">
+    <section>
+     <h2>About</h2>
+     <p>Hi, I'm François.</p>
+     <p>I'm a web based application enthusiast and developer. I'm also a big fan of Android, Java and all things related to the web.</p>
+     <p></p>
+    </section>
+  </div>
+</article>

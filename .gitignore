@@ -1,8 +1,9 @@
 *~
 _site/
-Gemfile.lock
+_tmp/
 
-# Latex temp files
-*.aux
-*.log
-*.out
+# Sublime text files
+*.sublime-*
+
+# all generated pdf
+*.pdf

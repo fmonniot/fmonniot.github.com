@@ -1,0 +1,97 @@
+// Media queries breakpoints (extracted from twitter bootstrap)
+// ------------------------------------------------------------
+
+// Extra small screen / phone
+@screen-xs-min: 480px;
+
+// Small screen / tablet
+@screen-sm-min: 768px;
+
+// Medium screen / desktop
+@screen-md-min: 992px;
+
+// Large screen / wide desktop
+@screen-lg-min: 1200px;
+
+// So media queries don't overlap when required, provide a maximum
+@screen-xs-max: (@screen-sm-min - 1);
+@screen-sm-max: (@screen-md-min - 1);
+@screen-md-max: (@screen-lg-min - 1);
+
+
+// Medium screen
+@media (max-width: @screen-md-max) {
+  article { padding: 1em }
+}
+
+// Small screen
+@media (max-width: @screen-sm-max) {
+
+  // Show main header as top bar
+  header.main {
+    position: static;
+    width: 80%;
+    padding: 0 10%;
+    min-height: 110px;
+
+    .logo {
+      float: left;
+      margin: auto 0;
+    }
+
+    h1 { padding-left: 100px; }
+
+    ul {
+      text-align: center;
+      padding-left: 100px;
+    }
+
+    li {
+      display: inline;
+    }
+
+    .follows {
+      display: block;
+      margin-bottom: 0;
+    }
+  }
+
+  // Replace the wrapper accordingly
+  .wrapper {
+    padding-left: 0;
+
+    article { padding: 1em; }
+  }
+}
+
+// Extra small screen
+@media (max-width: @screen-xs-max) {
+  .wrapper {
+    padding: 0;
+
+    article,
+    article .content,
+    article .content section {
+      padding: 0.3em;
+    }
+  }
+}
+
+// Is there really so small screen ?
+@media (max-width: @screen-xs-min) {
+  header .right { float: none; }
+
+  header.main {
+    h1 { padding-left: 0; }
+    ul { padding-left: 0; }
+  }
+
+  .cv .span2 {
+    width: 100%;
+    text-align: left;
+  }
+
+  .cv .span10 {
+    width: 100%;
+  }
+}

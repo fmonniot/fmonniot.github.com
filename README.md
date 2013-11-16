@@ -5,3 +5,7 @@ Tips
 To start a new post in Textmate:
 
     rake new title='My Title'
+
+Launching the server localy:
+
+    jekyll serve -w

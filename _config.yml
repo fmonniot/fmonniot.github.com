@@ -1,24 +1,21 @@
 markdown: rdiscount
-auto: true
 permalink: pretty
 exclude:
   - Rakefile
   - pids
   - README.md
-server: true
-paginate: 3 //the number of post per page
-lang: fr
+  - this.sublime-project
+  - this.sublime-workspace
+paginate: 3
+lang: en
 
-author: 
-    name: François Monniot
-    email: francois@monniot.eu
-    github: fmonniot
-    twitter: fmonniot
-    gplusto: fmonniot
-    
-    #75 characters max
-    description: This is yet a short description of myself. Try to keep it short.
+author:
+    name:    François Monniot
+    email:   francois@monniot.eu
+    github:  https://github.com/fmonniot
+    twitter: https://twitter.com/fmonniot
+    gplus:   http://gplus.to/fmonniot
 
 site:
-    name: "François Monniot"
-    url:  "http://francois.monniot.eu/"
+    name: François Monniot
+    url:  http://francois.monniot.eu/
