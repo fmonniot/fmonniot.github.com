@@ -1,13 +1,9 @@
----
-title: François Monniot
----
-
 <!DOCTYPE html>
 <html lang="fr">
   <head>
     <!-- meta -->
     <meta charset="utf-8"/>
-    <meta name="author"   content="{{ site.author.name }}">
+    <meta name="author"   content="François Monniot">
     <meta name="viewport" content="width=device-width">
 
     <!-- styles -->
@@ -33,9 +29,9 @@ title: François Monniot
     <nav class="menu">
       <ul>
         <li class="follows">
-          <a href="{{ site.author.github }}" class="btn-social btn-github"></a>
-          <a href="{{ site.author.twitter }}" class="btn-social btn-twitter"></a>
-          <a href="{{ site.author.gplus }}" class="btn-social btn-google"></a>
+          <a href="https://github.com/fmonniot" class="btn-social btn-github"></a>
+          <a href="https://twitter.com/fmonniot" class="btn-social btn-twitter"></a>
+          <a href="http://gplus.to/fmonniot" class="btn-social btn-google"></a>
         </li>
         <li><a href="/">Home</a></li>
         <li><a href="/cv">Curiculum Vitæ (FR)</a></li>
@@ -46,22 +42,16 @@ title: François Monniot
   </header>
 
   <div class="wrapper">
-    {{ content }}
+    <article>
+  <div class="content">
+    <section>
+     <h2>Contact</h2>
+     <p>You can contact me on <a href="http://gplus.to/fmonniot">Google+</a>, <a href="https://twitter.com/fmonniot">Twitter</a> or by <a href="mailto:francois@monniot.eu">mail</a></p>
+    </section>
+  </div>
+</article>
     
-    {% if paginator.total_pages > 1 %}
-    <nav>
-    {% if paginator.previous_page %}
-      <a href="{{ site.url }}page{{paginator.previous_page}}">Previous</a>
-    {% else %}
-      <span>Previous</span>
-    {% endif %}
-    {% if paginator.next_page %}
-      <a href="{{ site.url }}page{{paginator.next_page}}" class="right">Next</a>
-    {% else %}
-      <span class="right">Next</span>
-    {% endif %}
-    </nav>
-    {% endif %}
+    
   </div>
 
   <script type="text/javascript">

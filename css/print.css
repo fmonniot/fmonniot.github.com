@@ -5,13 +5,12 @@ body {
   line-height: 11pt;
   font-family: 'serif';
 }
-
-.no-print { display: none; }
-
+.no-print {
+  display: none;
+}
 .wrapper {
   padding-left: 0;
 }
-
 /*
 <address class="vcard only-print">
     <p class="adr">
@@ -26,53 +25,44 @@ body {
     <p class="role">Élève Ingénieur Télécom SudParis<p>
 </address>
 */
-
-@vcard-fn: #000;
-@vcard-role: #888;
-@vcard-infos: #888;
-
-.vcard {
-  .fn a{
-    color: @vcard-fn;
-    font-size: 2em;
-    font-style: normal;
-    font-weight: lighter;
-  }
-  .role {
-    color: @vcard-role;
-    font-size: 1.3em;
-  }
-  .adr, .tel, .email, .note {
-    color: @vcard-infos;
-    clear: right;
-    float: right;
-    font-size: 0.9em;
-    margin: 0;
-    text-align: right;
-  }
+.vcard .fn a {
+  color: #000000;
+  font-size: 2em;
+  font-style: normal;
+  font-weight: lighter;
 }
-
+.vcard .role {
+  color: #888888;
+  font-size: 1.3em;
+}
+.vcard .adr,
+.vcard .tel,
+.vcard .email,
+.vcard .note {
+  color: #888888;
+  clear: right;
+  float: right;
+  font-size: 0.9em;
+  margin: 0;
+  text-align: right;
+}
 header.main {
   display: none;
 }
-
 article {
   padding: 0;
-
-  .content {
-    background: none;
-    border: none;
-    padding: 0;
-
-    section {
-      padding: 0;
-    }
-  }
 }
-
-.cv {
-  .span10 {
-    margin-bottom: 0;
-  }
-  strong { font-weight: bold; }
+article .content {
+  background: none;
+  border: none;
+  padding: 0;
+}
+article .content section {
+  padding: 0;
+}
+.cv .span10 {
+  margin-bottom: 0;
+}
+.cv strong {
+  font-weight: bold;
 }
