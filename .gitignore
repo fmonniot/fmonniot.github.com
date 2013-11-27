@@ -4,6 +4,3 @@ _tmp/
 
 # Sublime text files
 *.sublime-*
-
-# all generated pdf
-*.pdf
