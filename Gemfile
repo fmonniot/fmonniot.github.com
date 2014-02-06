@@ -1,6 +1,6 @@
-source :rubygems
+source 'https://rubygems.org'
 
-#ruby=ruby-1.9.3-p125@jekyll
+#ruby=ruby-2.1.0
 
 gem 'albino'
 gem 'chronic'
