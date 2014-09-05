@@ -1,4 +1,4 @@
-markdown: rdiscount
+markdown: redcarpet
 permalink: pretty
 exclude:
   - Rakefile
