@@ -21,7 +21,7 @@ lang: en
         <h2>Last publications</h2>
         <ul>
         {% for post in paginator.posts %}
-            <li><a href="{{ post.url }}">{{ post.title }} <small>( at {{post.date | date_to_long_string }})</small></a></li>
+            <li><a href="{{ post.url }}">{{ post.title }} <small>({{ post.date | date: "%-d %B %Y" }})</small></a></li>
         {% endfor %}
         </ul>
      </section>
