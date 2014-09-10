@@ -1,13 +1,18 @@
-markdown: redcarpet
-permalink: pretty
+gems:
+  - jekyll-sitemap
+  - jekyll-mentions
 exclude:
   - Rakefile
   - pids
-  - this.sublime-project
-  - this.sublime-workspace
   - Gemfile*
-paginate: 3
-lang: en
+
+markdown: redcarpet
+redcarpet:
+  extensions: ["no_intra_emphasis", "autolink", "tables", "with_toc_data"]
+
+permalink: pretty
+
+jekyll-mentions: https://twitter.com
 
 author:
     name:    François Monniot
