@@ -1,3 +1,7 @@
+---
+# Style dedicated to the print version ( really useful for cv/resume)
+---
+
 body {
   background: none;
   text-indent: 0;
@@ -27,23 +31,23 @@ body {
 </address>
 */
 
-@vcard-fn: #000;
-@vcard-role: #888;
-@vcard-infos: #888;
+$vcard-fn: #000;
+$vcard-role: #888;
+$vcard-infos: #888;
 
 .vcard {
   .fn a{
-    color: @vcard-fn;
+    color: $vcard-fn;
     font-size: 2em;
     font-style: normal;
     font-weight: lighter;
   }
   .role {
-    color: @vcard-role;
+    color: $vcard-role;
     font-size: 1.3em;
   }
   .adr, .tel, .email, .note {
-    color: @vcard-infos;
+    color: $vcard-infos;
     clear: right;
     float: right;
     font-size: 0.9em;

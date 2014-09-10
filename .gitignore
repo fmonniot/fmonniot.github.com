@@ -7,3 +7,7 @@ _tmp/
 
 # all generated pdf
 *.pdf
+
+# tmp files
+.bundle/*
+.sass-cache/*
