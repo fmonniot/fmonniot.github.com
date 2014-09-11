@@ -16,11 +16,12 @@ paginate: 150 # Only to have access to paginator.total_posts
 jekyll-mentions: https://twitter.com
 
 author:
-    name:    François Monniot
-    email:   francois@monniot.eu
-    github:  https://github.com/fmonniot
-    twitter: https://twitter.com/fmonniot
-    gplus:   http://plus.google.com/+FrançoisMonniot
+    name:     François Monniot
+    email:    francois@monniot.eu
+    github:   https://github.com/fmonniot
+    twitter:  https://twitter.com/fmonniot
+    gplus:    https://plus.google.com/+FrançoisMonniot
+    linkedin: https://linkedin.com/in/fmonniot
 
 site:
     name: François Monniot
