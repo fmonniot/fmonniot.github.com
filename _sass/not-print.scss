@@ -1,0 +1,25 @@
+/// Styles not set only with print media
+
+
+// Site Header definition
+header.main {
+  box-shadow: 0 2px 6px $color-header-shadow;
+
+  .logo {
+    box-shadow: 0 2px 6px $color-header-shadow;
+  }
+}
+
+// Article definition
+article {
+  .content {
+    box-shadow: 0 4px 2px -2px $color-header-shadow;
+  }
+}
+
+/// Highlight code
+.highlight {
+  box-shadow: 3px 3px rgba(0,0,0,0.1);
+}
+
+.only-print { display: none; }

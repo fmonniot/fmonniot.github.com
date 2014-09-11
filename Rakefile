@@ -60,7 +60,6 @@ end
 
 def build_pdf(input_name, output_name)
   require 'pdfkit'
-  require 'nokogiri'
 
   input = File.open(input_name)
   page = input.read
@@ -74,11 +73,7 @@ def build_pdf(input_name, output_name)
                       'margin-left' => '0.5in',
                       'print-media-type' => true )
 
-  doc = ::Nokogiri::HTML(page)
-
-  doc.xpath('//link[contains(@type, "text/css")]').each do |elem|
-    kit.stylesheets << '_site' + elem['href']
-  end
+  kit.stylesheets << '_site/css/pdf.css'
 
   # Save the PDF to a file
   kit.to_file(output_name)

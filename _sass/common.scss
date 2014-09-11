@@ -1,28 +1,4 @@
 //
-// color variables
-//
-$color-article-footer:      #9c9c9c;
-$color-background:          #dedede;
-$color-blockquote:          #eeeeee;
-$color-cv-title:            #005c8c;
-$color-cv-separator:        $color-cv-title + #111;
-$color-footer:              #9a9a9a;
-$color-footer-article:      #cacaca;
-$color-footer-link:         #888888;
-$color-h1:                  #393935;
-$color-h2:                  #5b5b57;
-$color-header-background:   #ffffff;
-$color-header-shadow:       #aaaaaa;
-$color-link:                #1171b2;
-$color-link-disabled:       #999999;
-$color-link-hover:          #44c6f6;
-$color-link-light:          #33b5e5;
-$color-main:                #000000;
-$color-wrapper-background:  #ffffff;
-$color-wrapper-border:      #d2d2c8;
-
-
-//
 // Mixins
 //
 @mixin title($color, $size) {
@@ -114,10 +90,6 @@ table {
 
 .right { float: right; }
 
-@media screen {
-  .only-print { display: none; }
-}
-
 //
 // Effective Design
 //
@@ -125,7 +97,7 @@ table {
 // Site Header definition
 header.main {
   background: $color-header-background;
-  box-shadow: 0 2px 6px $color-header-shadow;
+  //box-shadow: 0 2px 6px $color-header-shadow;
   margin-bottom: 1em;
   height: 60%;
   width: 280px;
@@ -138,7 +110,7 @@ header.main {
     display: inline-block;
     height: 90px;
     width:  90px;
-    box-shadow: 0 2px 6px $color-header-shadow;
+    //box-shadow: 0 2px 6px $color-header-shadow;
     border-radius: 50%;
     margin-bottom: 1em;
   }
@@ -192,7 +164,7 @@ article {
     background: $color-wrapper-background;
     border: 1px solid $color-wrapper-border;
     border-radius: 4px;
-    box-shadow: 0 4px 2px -2px $color-header-shadow;
+    //box-shadow: 0 4px 2px -2px $color-header-shadow;
     padding: 1em;
 
     header {
@@ -254,4 +226,36 @@ article {
     margin-bottom: 0.5em;
   }
 
+}
+
+/// Highlight code
+.highlight {
+  background-color: #efefef;
+  border: 1px solid #ddd;
+  //box-shadow: 3px 3px rgba(0,0,0,0.1);
+  clear: right;
+  margin: 20px 0 20px 0;
+  overflow: hidden;
+  padding: 7px 7px 7px 10px;
+}
+
+pre {
+  overflow: auto;
+}
+
+code {
+  font-family:'Bitstream Vera Sans Mono','Courier', monospace;
+}
+
+pre code {
+  white-space: pre;
+}
+
+.code-title {
+  float: right;
+  position: relative;
+  top: 1.5em;
+  padding-right: 0.5em;
+  font-family: monospace;
+  margin: 0;
 }

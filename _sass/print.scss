@@ -1,9 +1,7 @@
----
-# Style dedicated to the print version ( really useful for cv/resume)
----
+/// Styles only set in print
 
 body {
-  background: none;
+  background: transparent;
   text-indent: 0;
   font-size: 10pt;
   line-height: 11pt;
@@ -79,4 +77,5 @@ article {
     margin-bottom: 0;
   }
   strong { font-weight: bold; }
+  section { clear: both; }
 }

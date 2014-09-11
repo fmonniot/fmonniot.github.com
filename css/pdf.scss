@@ -1,0 +1,16 @@
+---
+# Styles for pdf generation
+---
+@charset "utf-8";
+
+// Import partials from `sass_dir` (defaults to `_sass`)
+@import "variables.scss";
+@import "pygments_solarized.scss";
+@import "common.scss";
+
+@import "print.scss";
+
+// Fix a bug in pdf generation
+.wrapper {
+  padding-top: 1px;
+}
