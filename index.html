@@ -12,11 +12,11 @@ title: François Monniot
   </div>
 </article>
 
-{% if (site.posts | size) > 0 %}
+{% if paginator.total_posts > 0 %}
 <article>
   <div class="content">
     <section id="publications">
-        <h2>Last publications</h2>
+        <h2>Publications</h2>
         <ul>
         {% for post in site.posts %}
             <li><a href="{{ post.url }}">{{ post.title }} <small>({{ post.date | date: "%-d %B %Y" }})</small></a></li>

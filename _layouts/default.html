@@ -45,21 +45,6 @@ title: François Monniot
 
   <div class="wrapper">
     {{ content }}
-    
-    {% if paginator.total_pages > 1 %}
-    <nav>
-    {% if paginator.previous_page %}
-      <a href="{{ site.url }}page{{paginator.previous_page}}">Previous</a>
-    {% else %}
-      <span>Previous</span>
-    {% endif %}
-    {% if paginator.next_page %}
-      <a href="{{ site.url }}page{{paginator.next_page}}" class="right">Next</a>
-    {% else %}
-      <span class="right">Next</span>
-    {% endif %}
-    </nav>
-    {% endif %}
   </div>
 
   <script type="text/javascript">
