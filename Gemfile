@@ -6,3 +6,7 @@ source 'https://rubygems.org'
 gem 'jekyll'
 gem 'jekyll-sitemap'
 gem 'jekyll-mentions'
+
+# Rakefile
+gem 'chronic'
+gem 'pdfkit'
