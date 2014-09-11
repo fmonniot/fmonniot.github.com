@@ -54,8 +54,8 @@ end
 desc 'generate resume pdf'
 task :resume do
   puts "generate pdfs (resume|cv)_francois_monniot.pdf"
-  build_pdf("_site/cv/index.html","cv_francois_monniot.pdf")
-  build_pdf("_site/resume/index.html","resume_francois_monniot.pdf")
+  build_pdf("_site/cv/index.html","docs/cv_francois_monniot.pdf")
+  build_pdf("_site/resume/index.html","docs/resume_francois_monniot.pdf")
 end
 
 def build_pdf(input_name, output_name)
