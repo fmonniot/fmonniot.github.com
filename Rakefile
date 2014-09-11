@@ -37,15 +37,30 @@ HTML
   puts "new post generated in #{path}"
 end
 
-# rake pdf file="_site/cv/index.html" name="cv_francois_monniot"
+desc 'generate pdf from html file. args: file, name'
 task :pdf do
-  require 'pdfkit'
-  require 'nokogiri'
+  if ENV['file'].nil? || ENV['name'].nil?
+    puts 'Usage: rake pdf file="_site/cv/index.html" name="cv_francois_monniot"'
+    next
+  end
 
   input_name = ENV['file']
   output_name = ENV['name'] + '.pdf'
-
   puts "generate pdf (#{output_name}) for file #{input_name}"
+
+  build_pdf(input_name, output_name)
+end
+
+desc 'generate resume pdf'
+task :resume do
+  puts "generate pdfs (resume|cv)_francois_monniot.pdf"
+  build_pdf("_site/cv/index.html","cv_francois_monniot.pdf")
+  build_pdf("_site/resume/index.html","resume_francois_monniot.pdf")
+end
+
+def build_pdf(input_name, output_name)
+  require 'pdfkit'
+  require 'nokogiri'
 
   input = File.open(input_name)
   page = input.read
@@ -62,7 +77,6 @@ task :pdf do
   doc = ::Nokogiri::HTML(page)
 
   doc.xpath('//link[contains(@type, "text/css")]').each do |elem|
-    p elem
     kit.stylesheets << '_site' + elem['href']
   end
 
