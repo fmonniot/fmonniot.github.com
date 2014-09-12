@@ -259,13 +259,17 @@ table {
   border: 1px solid #ddd;
   //box-shadow: 3px 3px rgba(0,0,0,0.1);
   clear: right;
-  margin: 20px 0 20px 0;
+  margin: 16px 0;
   overflow: hidden;
-  padding: 7px 7px 7px 10px;
+  padding: 8px;
 }
 
 pre {
   overflow: auto;
+  margin: 0;
+  padding: 8px;
+  padding-right: 0;
+  margin-right: 8px;
 
   code {
     white-space: pre;
@@ -279,8 +283,24 @@ code {
 .code-title {
   float: right;
   position: relative;
-  top: 1.5em;
-  padding-right: 0.5em;
+  top: 24px;
+  padding-right: 4px;
   font-family: monospace;
   margin: 0;
+}
+
+.code-title {
+  float: none;
+  position: relative;
+  top: 1px;
+  padding-right: 0;
+
+  background-color: #efefef;
+  border: 1px solid #ddd;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.code-title + .highlight {
+  margin-top: 0;
+  padding-top: 0;
 }
