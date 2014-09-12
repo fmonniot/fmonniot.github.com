@@ -27,6 +27,8 @@ a {
 p {
   margin: 0 0 .5em;
   padding: 0 16px;
+
+  code { word-break: break-word; }
 }
 
 h1 {
@@ -48,8 +50,6 @@ h4 {
   padding: 0 16px;
 }
 
-footer a { @include link-color($color-footer-link, $color-link-hover); }
-
 table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -70,14 +70,10 @@ table {
     }
 }
 
-footer {
-  border-top: 1px solid $color-wrapper-border;
-  color: $color-footer;
-  font-size: 0.7em;
-  padding: 1em 0.3em 0 0.5em;
-
-  a { @include link-color($color-footer-link, $color-link-hover); }
-  .top { float: right; }
+.subhead {
+  font-size: 15px;
+  line-height: 24px;
+  color: rgba(0,0,0,0.54);
 }
 
 :focus {
