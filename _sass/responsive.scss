@@ -12,14 +12,4 @@
 
 // Is there really so small screen ?
 @media (max-width: $screen-xs-min) {
-  header .right { float: none; }
-
-  .cv .span2 {
-    width: 100%;
-    text-align: left;
-  }
-
-  .cv .span10 {
-    width: 100%;
-  }
 }

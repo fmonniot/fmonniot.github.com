@@ -24,8 +24,15 @@ title: François Monniot
   <body>
 
   <header class="app-bar">
-    <button class="hamburger-button">Show Navigation</button>
-    <span class="title">François Monniot</span>
+    <button class="action hamburger">Show Navigation</button>
+    <span class="title">{% if page.appbar.title %}{{ page.appbar.title }}{% else %}{{ site.name }}{% endif %}</span>
+    {% for action in page.appbar.actions %}
+      {% if action.href %}
+      <a href="{{ action.href }}" class="action {{ action.icon }}">{{ action.title }}</a>
+      {% else %}
+      <button class="action {{ action.icon }} {{ action.class }}">{{ action.title }}</button>
+      {% endif %}
+    {% endfor %}
   </header>
 
   <div id="side-drawer">
@@ -71,7 +78,7 @@ title: François Monniot
       }
 
       mask.addEventListener('click', toggleDrawer);
-      document.querySelector('.app-bar .hamburger-button').addEventListener('click', toggleDrawer);
+      document.querySelector('.app-bar .hamburger').addEventListener('click', toggleDrawer);
     })();
 
   </script>

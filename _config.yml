@@ -23,6 +23,5 @@ author:
     gplus:    https://plus.google.com/+FrançoisMonniot
     linkedin: https://linkedin.com/in/fmonniot
 
-site:
-    name: François Monniot
-    url:  http://francois.monniot.eu/
+name: François Monniot
+url:  http://francois.monniot.eu/
