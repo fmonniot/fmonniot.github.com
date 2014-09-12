@@ -11,8 +11,8 @@ title: François Monniot
     <meta name="viewport" content="width=device-width">
 
     <!-- styles -->
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,300italic,400,500,700,900"/>
-    <link rel="stylesheet" href="/css/styles.css" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
 
     <!-- include -->
     <link rel="icon"      type="image/x-icon"        href="favicon.ico"/>
@@ -23,29 +23,33 @@ title: François Monniot
   </head>
   <body>
 
-  <header class="main">
-    <!-- <a href="https://github.com/fmonniot/fmonniot.github.com" class="fork_me">Fork me on Github</a> -->
-    <img src="/images/me.jpg" class="logo" alt="My avatar" />
-    <h1>François Monniot</h1>
-    <nav class="menu">
+  <header class="app-bar">
+    <button class="hamburger-button">Show Navigation</button>
+    <span class="title">François Monniot</span>
+  </header>
+
+  <div id="side-drawer">
+    <span class="logo">François Monniot</span>
+    <nav>
       <ul>
-        <li class="follows">
-          <a href="{{ site.author.github }}" class="btn-social btn-github"></a>
-          <a href="{{ site.author.twitter }}" class="btn-social btn-twitter"></a>
-          <a href="{{ site.author.gplus }}" class="btn-social btn-google"></a>
-        </li>
         <li><a href="/">Home</a></li>
         <li><a href="/cv">Curiculum Vitæ (FR)</a></li>
         <li><a href="/resume">Resume (EN)</a></li>
       </ul>
     </nav>
-  </header>
+    <div class="about">
+      <a href="https://github.com/fmonniot/fmonniot.github.com">Fork on GitHub</a><br/>
+      Licensed under the MIT License
+    </div>
+  </div>
 
   <div class="wrapper">
     {{ content }}
   </div>
+  <div id="mask-modal"></div>
 
   <script type="text/javascript">
+    // Google Analytics
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-38786904-1']);
     _gaq.push(['_setDomainName', 'monniot.eu']);
@@ -55,7 +59,21 @@ title: François Monniot
       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
-  </script>
 
+    // Side drawer
+    (function(){
+      var drawer = document.getElementById('side-drawer');
+      var mask = document.getElementById('mask-modal');
+
+      function toggleDrawer() {
+        drawer.classList.toggle('open');
+        mask.classList.toggle('mask-visible');
+      }
+
+      mask.addEventListener('click', toggleDrawer);
+      document.querySelector('.app-bar .hamburger-button').addEventListener('click', toggleDrawer);
+    })();
+
+  </script>
   </body>
 </html>

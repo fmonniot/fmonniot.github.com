@@ -5,6 +5,7 @@
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import "variables.scss";
+@import "mixins.scss";
 @import "pygments_solarized.scss";
 @import "common.scss";
 

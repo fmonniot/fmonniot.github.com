@@ -2,34 +2,26 @@
 layout: default
 title: François Monniot
 ---
-<article>
-  <div class="content">
-    <section>
-     <h2>Hi there, I'm François</h2>
-     <p>I'm a web based application engineer. I love to build thing that use the web: REST api, web front-end or android application.</p>
-     <p>I love the open source mindset and try to make all my side projects available <a href="{{ site.author.github }}">on GitHub</a>.</p>
-    </section>
+<section>
+ <h1>Hi there, I'm François</h1>
+ <p>I'm a web based application engineer. I love to build thing that use the web: REST api, web front-end or android application.</p>
+ <p>I love the open source mindset and try to make all my side projects available <a href="{{ site.author.github }}">on GitHub</a>.</p>
+</section>
 
-    <section>
-      <h2>Contact</h2>
-      <p>
-      You can contact me on <a href="{{ site.author.gplus }}">Google+</a>, <a href="{{ site.author.twitter }}">Twitter</a> or by <a href="mailto:{{ site.author.email }}">mail</a>. You can also found me on <a href="{{ site.author.linkedin }}">LinkedIn</a>.
-      </p>
-    </section>
-  </div>
-</article>
+<section>
+  <h1>Contact</h1>
+  <p>
+  You can contact me on <a href="{{ site.author.gplus }}">Google+</a>, <a href="{{ site.author.twitter }}">Twitter</a> or by <a href="mailto:{{ site.author.email }}">mail</a>. You can also found me on <a href="{{ site.author.linkedin }}">LinkedIn</a>.
+  </p>
+</section>
 
 {% if paginator.total_posts > 0 %}
-<article>
-  <div class="content">
-    <section id="publications">
-        <h2>Publications</h2>
-        <ul>
-        {% for post in site.posts %}
-            <li><a href="{{ post.url }}">{{ post.title }} <small>({{ post.date | date: "%-d %B %Y" }})</small></a></li>
-        {% endfor %}
-        </ul>
-     </section>
-  </div>
-</article>
+<section id="publications">
+    <h1>Publications</h1>
+    <ul>
+    {% for post in site.posts %}
+        <li><a href="{{ post.url }}">{{ post.title }} <small>({{ post.date | date: "%-d %B %Y" }})</small></a></li>
+    {% endfor %}
+    </ul>
+ </section>
 {% endif %}
