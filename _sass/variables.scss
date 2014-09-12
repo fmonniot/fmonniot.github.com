@@ -1,29 +1,85 @@
 // Variables
 
-// Our variables
-$base-font-family: "RobotoDraft", sans-serif;
+$app-bar-height: 56px;
 
-// Color variables
-// ------------------------------------------------------------
-$color-article-footer:      #9c9c9c;
-$color-background:          #ffffff;
-$color-blockquote:          #eeeeee;
-$color-cv-title:            #005c8c;
-$color-cv-separator:        $color-cv-title + #111;
-$color-footer:              #9a9a9a;
-$color-footer-article:      #cacaca;
-$color-footer-link:         #888888;
-$color-h1:                  #393935;
-$color-h2:                  #5b5b57;
-$color-header-background:   #ffffff;
-$color-header-shadow:       #aaaaaa;
-$color-link:                #1171b2;
-$color-link-disabled:       #999999;
-$color-link-hover:          #44c6f6;
-$color-link-light:          #33b5e5;
-$color-main:                #000000;
-$color-wrapper-background:  #ffffff;
-$color-wrapper-border:      #d2d2c8;
+// Font variables
+$base-font-family: "RobotoDraft", sans-serif;
+$code-font-family: monospace;
+
+// Font sizes
+$font-size-display:  34px;
+$font-size-headline: 24px;
+$font-size-title:    20px;
+$font-size-subhead:  16px;
+$font-size-body:     14px;
+$font-size-caption:  12px;
+
+$leading-display:    40px;
+$leading-headline:   32px;
+$leading-subhead1:   28px;
+$leading-subhead2:   24px;
+$leading-body1:      24px;
+$leading-body2:      20px;
+
+// Color variables (private var)
+// --------------------------------------------------
+$black87:     rgba(0,0,0,0.87);
+$black54:     rgba(0,0,0,0.54);
+$black25:     rgba(0,0,0,0.25);
+$black10:     rgba(0,0,0,0.10);
+
+$blue-daisy:  rgb(  2, 119, 187);
+$azure:       rgb( 86, 119, 252);
+
+$iron:        rgb(204, 204, 204);
+$gainsboro:   rgb(224, 224, 224);
+$porcelain:   rgb(238, 238, 238);
+$white-smoke: rgb(248, 248, 248);
+$white:       rgb(255, 255, 255);
+
+// Color Application
+// --------------------------------------------------
+$body-bg-color:                   $white;
+
+$link-color:                      $blue-daisy;
+$link-hover-color:                darken($link-color, 15%);
+$text-color:                      $black87;
+
+$blockquote-border-color:         $porcelain;
+$subhead-text-color:              $black54;
+$outline-color:                   $azure;
+
+$table-border-color:              $iron;
+$table-bg-color:                  $body-bg-color;
+$table-bg2-color:                 $white-smoke;
+
+$app-bar-bg-color:                $white;
+
+$side-drawer-border-color:        $gainsboro;
+$side-drawer-bg:                  $white;
+$side-drawer-text-color:          $black87;
+$side-drawer-link-focus-bg-color: $porcelain;
+$mask-modal-bg:                   $black54;
+
+$highlight-bg-color:              $porcelain;
+$highlight-border-color:          $gainsboro;
+$highlight-title-border-color:    lighten($highlight-border-color, 1%);
+
+// Z-Index Scale (private vars)
+// --------------------------------------------------
+$zIndex-1:   10;
+$zIndex-2:   20;
+$zIndex-3:   30;
+$zIndex-4:   40;
+$zIndex-5:   50;
+
+// Z-Index Applications
+// --------------------------------------------------
+$zIndex--wrapper:        $zIndex-1;
+$zIndex--app-bar:        $zIndex-2;
+$zIndex--app-bar-action: $zIndex-3;
+$zIndex--mask-modal:     $zIndex-4;
+$zIndex--side-drawer:    $zIndex-5;
 
 // Media queries breakpoints (extracted from twitter bootstrap)
 // ------------------------------------------------------------

@@ -8,6 +8,6 @@ To start a new post in Textmate:
 
     rake new title='My Title'
 
-Launching the server localy:
+Launching the server localy in dev mode (some links appear in the nav drawer):
 
-    jekyll serve -w
+    jekyll serve --config=_config.yml,_config-dev.yml

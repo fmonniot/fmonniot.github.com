@@ -8,7 +8,15 @@ exclude:
 
 markdown: redcarpet
 redcarpet:
-  extensions: ["no_intra_emphasis", "autolink", "tables", "with_toc_data"]
+  extensions:
+    - "no_intra_emphasis"
+    - "autolink"
+    - "tables"
+    - "with_toc_data"
+    - "strikethrough"
+    - "superscript"
+    - "footnotes"
+    - "hard_wrap"
 
 permalink: pretty
 paginate: 150 # Only to have access to paginator.total_posts
