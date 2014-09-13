@@ -14,3 +14,20 @@ layout: default
 <section>
   {{ content }}
 </section>
+<footer class="page-footer">
+  {% if page.previous != nil %}
+  <a href="{{ page.previous.url }}" class="previous{% if page.next != nil %} narrow{% endif %}">
+    <img alt="" src="//material-design.storage.googleapis.com/images/Arrow-left_24x24px.svg">
+    <span>Previous:</span>
+    <div>{{ page.previous.title }}</div>
+  </a>
+  {% endif %}
+
+  {% if page.next != nil %}
+  <a href="{{ page.next.url }}" class="next">
+    <img alt="" src="//material-design.storage.googleapis.com/images/Arrow-right_24x24px.svg">
+    <span>Next:</span>
+    <div>{{ page.next.title }}</div>
+  </a>
+  {% endif %}
+</footer>

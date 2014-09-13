@@ -245,6 +245,64 @@ table {
   }
 }
 
+.page-footer {
+  height: 80px;
+  background-color: $page-footer-bg-color;
+  font-weight: 500;
+
+  a {
+    display: block;
+    height: 80px - 24px;
+    padding-top: 24px;
+  }
+
+  img {
+    width: 24px;
+    padding-top: 24px;
+    float: left;
+  }
+
+  span {
+    display: block;
+    color: $page-footer-sub-color;
+    font-size: 15px;
+    line-height: 18px;
+    margin-top: 24px - 18px;
+  }
+
+  div {
+    line-height: 24px;
+    font-size: 20px;
+    color: $page-footer-title-color;
+  }
+
+  .previous {
+    padding-left: 16px;
+
+    img {
+      float: left;
+      margin-right: 12px;
+    }
+
+    &.narrow {
+        float: left;
+        width: 56px - 16px;
+
+        span, div { display: none; }
+      }
+  }
+
+  .next {
+    padding-right: 16px;
+    text-align: right;
+
+    img {
+      float: right;
+      margin-left: 12px;
+    }
+  }
+}
+
 // Curiculum Vitae & Resume
 .cv {
   margin-bottom: 8px;
