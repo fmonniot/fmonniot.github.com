@@ -86,7 +86,7 @@ table {
       background-color: $table-bg-color;
       border-top: 1px solid $table-border-color;
 
-      &:nth-child(2n) {
+      &:nth-child(even) {
         background-color: $table-bg2-color;
       }
     }
@@ -95,6 +95,43 @@ table {
       border: 1px solid $table-border-color;
       padding: 8px 12px;
     }
+
+    th { font-weight: 700; }
+}
+
+/* responsive table (with associated js) */
+@media screen and (max-width: 480px) {
+  table, tbody {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  thead { display: none; }
+
+  table {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 16px;
+    padding-right: 16px;
+
+    tr, th, td {
+      display: block;
+      padding: 0;
+      text-align: left;
+      white-space: normal;
+    }
+
+    th[data-title]:before,
+    td[data-title]:before {
+        content: attr(data-title) ":\00A0";
+        font-weight: 700;
+    }
+
+    td { border: none; }
+
+    td:empty { display: none; }
+  }
 }
 
 .subhead {

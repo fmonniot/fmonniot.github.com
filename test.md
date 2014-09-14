@@ -204,6 +204,7 @@ But let's throw in a <b>tag</b>.
 # Tables
 
 Tables aren't part of the core Markdown spec, but they are part of GFM. They are an easy way of adding tables to your email -- a task that would otherwise require copy-pasting from another application.
+On small viewport, tables will be represented as a list of cell with the associated header before it.
 
 ```
 Colons can be used to align columns.
@@ -220,6 +221,12 @@ Markdown | Less | Pretty
 --- | --- | ---
 *Still* | `renders` | **nicely**
 1 | 2 | 3
+
+A very long table that could have caused some problems.
+
+| Header 1  | Header 2  | Header 3  | Header 4  | Header 5  | Header 6  | Header 7  | Header 8  | Header 9  |
+| --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- |
+| Content 1 | Content 2 | Content 3 | Content 4 | Content 5 | Content 6 | Content 7 | Content 8 | Content 9 |
 ```
 
 Colons can be used to align columns.
@@ -236,6 +243,12 @@ Markdown | Less | Pretty
 --- | --- | ---
 *Still* | `renders` | **nicely**
 1 | 2 | 3
+
+A very long table that could have caused some problems.
+
+| Header 1  | Header 2  | Header 3  | Header 4  | Header 5  | Header 6  | Header 7  | Header 8  | Header 9  |
+| --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- |
+| Content 1 | Content 2 | Content 3 | Content 4 | Content 5 | Content 6 | Content 7 | Content 8 | Content 9 |
 
 # Blockquotes
 
