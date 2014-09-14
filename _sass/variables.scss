@@ -1,12 +1,11 @@
 // Variables
-
-$app-bar-height: 56px;
+// --------------------------------------------------
 
 // Font variables
-$base-font-family: "RobotoDraft", sans-serif;
-$code-font-family: monospace;
+// --------------------------------------------------
+$base-font-family:  "RobotoDraft", sans-serif;
+$code-font-family:   monospace;
 
-// Font sizes
 $font-size-display:  34px;
 $font-size-headline: 24px;
 $font-size-title:    20px;
@@ -55,6 +54,7 @@ $table-bg-color:                  $body-bg-color;
 $table-bg2-color:                 $white-smoke;
 
 $app-bar-bg-color:                $white;
+$app-bar-shadow-color:            $black25;
 
 $side-drawer-border-color:        $gainsboro;
 $side-drawer-bg:                  $white;
@@ -66,6 +66,7 @@ $mask-modal-bg:                   $black54;
 $highlight-bg-color:              $porcelain;
 $highlight-border-color:          $gainsboro;
 $highlight-title-border-color:    lighten($highlight-border-color, 1%);
+$highlight-shadow-color:          $black10;
 
 $page-footer-bg-color:            $slate-gray;
 $page-footer-sub-color:           $white54;
@@ -90,25 +91,14 @@ $zIndex--side-drawer:    $zIndex-5;
 // Metrics Applications
 // --------------------------------------------------
 
+$app-bar-height: 56px;
 // TODO
 
 
-// Media queries breakpoints (extracted from twitter bootstrap)
-// ------------------------------------------------------------
+// Media queries breakpoints
+// --------------------------------------------------
 
-// Extra small screen / phone
-$screen-xs-min: 480px;
-
-// Small screen / tablet
-$screen-sm-min: 768px;
-
-// Medium screen / desktop
-$screen-md-min: 992px;
-
-// Large screen / wide desktop
-$screen-lg-min: 1200px;
-
-// So media queries don't overlap when required, provide a maximum
-$screen-xs-max: ($screen-sm-min - 1);
-$screen-sm-max: ($screen-md-min - 1);
-$screen-md-max: ($screen-lg-min - 1);
+$phone-breakpoint:       360px;
+$phablet-breakpoint:     767px;
+$tablet-breakpoint:      1159px;
+$desktop-breakpoint:     1429px;

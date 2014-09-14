@@ -1,0 +1,35 @@
+// Responsive table for phone and phablet
+// --------------------------------------------------
+
+@media screen and (max-width: $phablet-breakpoint) {
+  table, tbody {
+    display: block;
+    width: 100%;
+  }
+
+  thead { display: none; }
+
+  table {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 16px;
+    padding-right: 16px;
+
+    tr, th, td {
+      display: block;
+      padding: 0;
+      text-align: left;
+      white-space: normal;
+    }
+
+    th[data-title]:before,
+    td[data-title]:before {
+        content: attr(data-title) ":\00A0";
+        font-weight: 700;
+    }
+
+    td { border: none; }
+
+    td:empty { display: none; }
+  }
+}

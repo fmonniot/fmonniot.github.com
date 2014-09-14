@@ -1,0 +1,47 @@
+// Tablet
+// --------------------------------------------------
+
+.wrapper { width: 720px; }
+
+.highlight {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.code-title {
+  float: right;
+  top: $leading-body1 + 2px; //2 borders of 1px
+  right: 16px;
+  padding: 0 8px;
+}
+
+.page-footer {
+  .previous.narrow {
+    span, div { display: block; }
+  }
+
+  .previous, .previous.narrow, .next { width: 50%; }
+
+  .next { float: right; }
+}
+
+.cv {
+  header .span2 {
+    background-color: $iron;
+    // padding h2 + margin h2 + half of h2 line height
+    margin-top: 16px + 8px + ($leading-subhead2 / 2);
+    height: 6px;
+  }
+
+  .span2 {
+    width: 20%;
+    display: inline-block;
+    vertical-align: top;
+    text-align: right;
+  }
+
+  .span10 {
+    width: 79%;
+    display: inline-block;
+  }
+}

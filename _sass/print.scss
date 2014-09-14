@@ -1,7 +1,6 @@
 /// Styles only set in print
 
 body {
-  background: transparent;
   text-indent: 0;
   font-size: 10pt;
   line-height: 11pt;
@@ -14,7 +13,7 @@ body {
   padding-left: 0;
 }
 
-/*
+/* (FR version)
 <address class="vcard only-print">
     <p class="adr">
         <span class="street-address">6 rue de la République</span><br>
@@ -54,28 +53,9 @@ $vcard-infos: #888;
   }
 }
 
-header.main {
-  display: none;
-}
+.app-bar, #side-drawer, .page-footer { display: none; }
 
-article {
-  padding: 0;
-
-  .content {
-    background: none;
-    border: none;
-    padding: 0;
-
-    section {
-      padding: 0;
-    }
-  }
-}
-
-.cv {
-  .span10 {
-    margin-bottom: 0;
-  }
-  strong { font-weight: bold; }
-  section { clear: both; }
+/// Highlight code
+.highlight {
+  box-shadow: none;
 }

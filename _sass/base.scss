@@ -2,6 +2,14 @@
 // General tags
 //
 
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
   background: $body-bg-color;
   color: $text-color;
@@ -66,6 +74,8 @@ h4 {
   margin-bottom: 12px;
 }
 
+img { max-width: 100%; }
+
 p {
   margin: 0 0 8px;
   padding: 0 16px;
@@ -99,41 +109,6 @@ table {
     th { font-weight: 700; }
 }
 
-/* responsive table (with associated js) */
-@media screen and (max-width: 480px) {
-  table, tbody {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  thead { display: none; }
-
-  table {
-    margin-left: 0;
-    margin-right: 0;
-    padding-left: 16px;
-    padding-right: 16px;
-
-    tr, th, td {
-      display: block;
-      padding: 0;
-      text-align: left;
-      white-space: normal;
-    }
-
-    th[data-title]:before,
-    td[data-title]:before {
-        content: attr(data-title) ":\00A0";
-        font-weight: 700;
-    }
-
-    td { border: none; }
-
-    td:empty { display: none; }
-  }
-}
-
 .subhead {
   font-size: $font-size-subhead;
   line-height: $leading-subhead2;
@@ -141,6 +116,8 @@ table {
 }
 
 :focus { outline: 1px solid $outline-color; }
+
+@media not print { .only-print { display: none; } }
 
 //
 // Material Design
@@ -150,6 +127,7 @@ table {
   padding-top: 56px;
   width: 100%;
   z-index: $zIndex--wrapper;
+  margin: auto;
 }
 
 .app-bar {
@@ -163,6 +141,8 @@ table {
   position: fixed;
   padding: 0 16px;
   z-index: $zIndex--app-bar;
+
+  box-shadow: 0 2px 5px $app-bar-shadow-color;
 
   .title {
     position: fixed;
@@ -291,7 +271,7 @@ table {
 
   a {
     display: block;
-    height: 80px - 24px;
+    height: 100%;
     padding-top: 24px;
   }
 
@@ -377,6 +357,7 @@ table {
 
 .highlight {
   background-color: $highlight-bg-color;
+  box-shadow: 4px 4px $highlight-shadow-color;
   border: 1px solid $highlight-border-color;
   clear: right;
   margin: 16px 0;
@@ -397,7 +378,6 @@ pre {
 }
 
 .code-title {
-  float: none;
   position: relative;
   top: 1px;
   padding-right: 0;
