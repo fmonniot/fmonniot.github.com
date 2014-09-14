@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: wrapped
 title: Testing layout and design
 appbar:
   title: Markdown test page
@@ -139,6 +139,10 @@ Reference-style:
 
 ![alt text][logo]
 
+Without padding:
+
+<div><img src="/images/reunion.jpg" alt="Reunion by Romain Guy" title="Reunion by Romain Guy"></div>
+
 [logo]: /images/me.jpg "Logo Title Text 1"
 ```
 
@@ -151,6 +155,10 @@ Inline-style:
 Reference-style: 
 
 ![alt text][logo]
+
+Without padding:
+
+<div><img src="/images/reunion.jpg" alt="Reunion by Romain Guy" title="Reunion by Romain Guy"></div>
 
 [logo]: /images/me.jpg "Logo Title Text 1"
 
