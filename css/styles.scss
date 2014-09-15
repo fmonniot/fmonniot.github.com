@@ -10,7 +10,7 @@
 
 @import "responsive-tables.scss";
 
-@media screen and (min-width: $phablet-breakpoint) {
+@media print, screen and (min-width: $phablet-breakpoint) {
   @import "tablet.scss";
 }
 
