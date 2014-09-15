@@ -33,3 +33,17 @@ author:
 
 name: François Monniot
 url:  http://francois.monniot.eu/
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "wrapped"

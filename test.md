@@ -1,5 +1,4 @@
 ---
-layout: wrapped
 title: Testing layout and design
 appbar:
   title: Markdown test page
