@@ -24,7 +24,10 @@
 
   <header class="app-bar">
     <button class="action hamburger">Show Navigation</button>
-    <span class="title">{% if page.appbar.title %}{{ page.appbar.title }}{% else %}{{ site.name }}{% endif %}</span>
+    <span class="title">{% if page.appbar.title %}
+      {{ page.appbar.title }}{% else if page.title %}
+      {{ page.title }}{% else %}
+      {{ site.title }}{% endif %}</span>
     {% for action in page.appbar.actions %}
       {% if action.href %}
       <a href="{{ action.href }}" class="action {{ action.icon }}">{{ action.title }}</a>
