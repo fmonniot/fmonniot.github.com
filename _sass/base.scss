@@ -124,15 +124,16 @@ table {
 //
 
 .wrapper {
-  padding-top: 56px;
   width: 100%;
   z-index: $zIndex--wrapper;
   margin: auto;
+  margin-top: 56px;
 }
 
 .app-bar {
   background: $app-bar-bg-color;
 
+  top: 0;
   left: 0;
   right: 0;
 
@@ -147,7 +148,6 @@ table {
   .title {
     position: fixed;
     left: 56px;
-    right: 56px;
     font-size: $font-size-title;
     line-height: $app-bar-height;
   }
@@ -181,7 +181,7 @@ table {
 
 #side-drawer {
   width: 80%;
-  max-width: 304px;
+  max-width: $sideDrawer-max-width;
   border-right: 1px solid $side-drawer-border-color;
 
   bottom: 0;

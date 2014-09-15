@@ -79,6 +79,7 @@ $zIndex-2:   20;
 $zIndex-3:   30;
 $zIndex-4:   40;
 $zIndex-5:   50;
+$zIndex-6:   60;
 
 // Z-Index Applications
 // --------------------------------------------------
@@ -88,10 +89,16 @@ $zIndex--app-bar-action: $zIndex-3;
 $zIndex--mask-modal:     $zIndex-4;
 $zIndex--side-drawer:    $zIndex-5;
 
+$zIndex--app-bar--desktop:        $zIndex-1;
+$zIndex--app-bar-action--desktop: $zIndex-5;
+$zIndex--wrapper--desktop:        $zIndex-4;
+
+
 // Metrics Applications
 // --------------------------------------------------
 
 $app-bar-height: 56px;
+$sideDrawer-max-width: 239px; // (304px)
 // TODO
 
 
