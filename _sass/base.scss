@@ -170,12 +170,11 @@ table {
     &:nth-child(4) { right: 52px; }
     &:nth-child(5) { right: 100px; }
 
-    &.download {
-      background-image: url("//material-design.storage.googleapis.com/images/download.svg");
-    }
-    &.hamburger {
-      background-image: url("//material-design.storage.googleapis.com/images/hamburger.svg");
-    }
+    &.add { background-image: url("/images/add.svg"); }
+    &.delete { background-image: url("/images/delete.svg"); }
+    &.download { background-image: url("/images/download.svg"); }
+    &.edit { background-image: url("/images/edit.svg"); }
+    &.hamburger { background-image: url("/images/hamburger.svg"); }
   }
 }
 
