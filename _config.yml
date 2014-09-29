@@ -34,6 +34,9 @@ author:
 name: François Monniot
 url:  http://francois.monniot.eu/
 
+sass:
+  style: :compressed
+
 defaults:
   -
     scope:
