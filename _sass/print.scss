@@ -1,0 +1,49 @@
+/// Styles only set in print
+
+body {
+  text-indent: 0;
+  font-size: 10pt;
+  line-height: 11pt;
+}
+
+.no-print { display: none; }
+
+.wrapper {
+  margin: 1px;
+  width: auto;
+}
+
+.vcard {
+  .fn a{
+    color: $vcard-fn-color;
+    font-size: 2em;
+    font-style: normal;
+    font-weight: lighter;
+  }
+  .role {
+    color: $vcard-role-color;
+    font-size: 1.3em;
+  }
+  .adr, .tel, .email, .note {
+    color: $vcard-infos-color;
+    clear: right;
+    float: right;
+    font-size: 0.9em;
+    margin: 0;
+    text-align: right;
+  }
+}
+
+// Do not let a vcard disturb you!
+section { clear: both; }
+
+// Remove UI elements
+.app-bar, #side-drawer, .page-footer { display: none; }
+
+/// Disable shadow (print bug in chrome)
+.highlight {
+  box-shadow: none;
+}
+
+// No scroll on paper
+pre code { white-space: pre-wrap; }

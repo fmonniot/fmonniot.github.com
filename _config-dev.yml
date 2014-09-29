@@ -1,0 +1,5 @@
+dev: true
+
+sass:
+  style: :nested
+  sourcemap: :inline

@@ -4,3 +4,7 @@ _tmp/
 
 # Sublime text files
 *.sublime-*
+
+# tmp files
+.bundle/*
+.sass-cache/*

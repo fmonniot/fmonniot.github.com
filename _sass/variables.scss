@@ -1,0 +1,115 @@
+// Variables
+// --------------------------------------------------
+
+// Font variables
+// --------------------------------------------------
+$base-font-family:  "RobotoDraft", sans-serif;
+$code-font-family:   monospace;
+
+$font-size-display:  34px;
+$font-size-headline: 24px;
+$font-size-title:    20px;
+$font-size-subhead:  16px;
+$font-size-body:     14px;
+$font-size-caption:  12px;
+
+$leading-display:    40px;
+$leading-headline:   32px;
+$leading-subhead1:   28px;
+$leading-subhead2:   24px;
+$leading-body1:      24px;
+$leading-body2:      20px;
+
+// Color variables (private var)
+// --------------------------------------------------
+$black87:     rgba(  0,   0,   0, 0.87);
+$black54:     rgba(  0,   0,   0, 0.54);
+$black25:     rgba(  0,   0,   0, 0.25);
+$black10:     rgba(  0,   0,   0, 0.10);
+$white54:     rgba(255, 255, 255, 0.54);
+
+$slate-gray:  rgb( 96, 119, 139);
+$blue-daisy:  rgb(  2, 119, 187);
+$azure:       rgb( 86, 119, 252);
+
+$iron:        rgb(204, 204, 204);
+$gainsboro:   rgb(224, 224, 224);
+$porcelain:   rgb(238, 238, 238);
+$white-smoke: rgb(248, 248, 248);
+$white:       rgb(255, 255, 255);
+
+// Color Application
+// --------------------------------------------------
+$link-color:                      $blue-daisy;
+$link-hover-color:                darken($link-color, 15%);
+$text-color:                      $black87;
+$outline-color:                   $azure;
+
+$body-bg-color:                   $white;
+$blockquote-border-color:         $porcelain;
+$subhead-text-color:              $black54;
+
+$table-border-color:              $iron;
+$table-bg-color:                  $body-bg-color;
+$table-bg2-color:                 $white-smoke;
+
+$app-bar-bg-color:                $white;
+$app-bar-shadow-color:            $black25;
+
+$side-drawer-border-color:        $gainsboro;
+$side-drawer-bg:                  $white;
+$side-drawer-text-color:          $black87;
+$side-drawer-link-focus-bg-color: $porcelain;
+
+$mask-modal-bg:                   $black54;
+
+$highlight-bg-color:              $porcelain;
+$highlight-border-color:          $gainsboro;
+$highlight-title-border-color:    lighten($highlight-border-color, 1%);
+$highlight-shadow-color:          $black10;
+
+$page-footer-bg-color:            $slate-gray;
+$page-footer-sub-color:           $white54;
+$page-footer-title-color:         $white;
+
+$vcard-fn-color:                  $black87;
+$vcard-role-color:                $black54;
+$vcard-infos-color:               $black54;
+
+// Z-Index Scale (private vars)
+// --------------------------------------------------
+$zIndex-1:   10;
+$zIndex-2:   20;
+$zIndex-3:   30;
+$zIndex-4:   40;
+$zIndex-5:   50;
+$zIndex-6:   60;
+
+// Z-Index Applications
+// --------------------------------------------------
+$zIndex--wrapper:        $zIndex-1;
+$zIndex--app-bar:        $zIndex-2;
+$zIndex--app-bar-action: $zIndex-3;
+$zIndex--mask-modal:     $zIndex-4;
+$zIndex--side-drawer:    $zIndex-5;
+
+$zIndex--app-bar--desktop:        $zIndex-1;
+$zIndex--app-bar-action--desktop: $zIndex-5;
+$zIndex--wrapper--desktop:        $zIndex-4;
+
+
+// Metrics Applications
+// --------------------------------------------------
+
+$app-bar-height: 56px;
+$sideDrawer-max-width: 239px; // (304px)
+// TODO
+
+
+// Media queries breakpoints
+// --------------------------------------------------
+
+$phone-breakpoint:       360px;
+$phablet-breakpoint:     767px;
+$tablet-breakpoint:      1159px;
+$desktop-breakpoint:     1429px;
