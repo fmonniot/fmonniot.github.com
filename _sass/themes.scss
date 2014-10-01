@@ -1,0 +1,33 @@
+.theme-blue-grey {
+  .app-bar {
+    background: $blue-grey-700-color;
+
+    .title { color: $white; }
+    .action { color: $white; }
+  }
+
+  .page-footer { background-color: $blue-grey-500-color; }
+
+  .cv h2 { color: $blue-grey-500-color; }
+
+  @media print, screen and (min-width: $phablet-breakpoint) {
+    .cv header .span2 { background-color: $blue-grey-400-color;; }
+  }
+}
+
+.theme-indigo {
+  .app-bar {
+    background: $indigo-700-color;
+
+    .title { color: $white; }
+    .action { color: $white; }
+  }
+
+  .page-footer { background-color: $indigo-500-color; }
+
+  .cv h2 { color: $indigo-500-color; }
+
+  @media print, screen and (min-width: $phablet-breakpoint) {
+    .cv header .span2 { background-color: $indigo-400-color; }
+  }
+}

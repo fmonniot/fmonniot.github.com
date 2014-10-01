@@ -38,8 +38,19 @@ $porcelain:   rgb(238, 238, 238);
 $white-smoke: rgb(248, 248, 248);
 $white:       rgb(255, 255, 255);
 
+$blue-grey-400-color:             #78909c;
+$blue-grey-500-color:             #607d8b;
+$blue-grey-700-color:             #455a64;
+$blue-grey-900-color:             #263238;
+
+$indigo-400-color: #5c6bc0;
+$indigo-500-color: #3f51b5;
+$indigo-700-color: #303f9f;
+$indigo-900-color: #1a237e;
+
 // Color Application
 // --------------------------------------------------
+
 $link-color:                      $blue-daisy;
 $link-hover-color:                darken($link-color, 15%);
 $text-color:                      $black87;
@@ -102,6 +113,7 @@ $zIndex--wrapper--desktop:        $zIndex-4;
 // --------------------------------------------------
 
 $app-bar-height: 56px;
+$app-bar-tablet-height: 64px;
 $sideDrawer-max-width: 239px; // (304px)
 // TODO
 
