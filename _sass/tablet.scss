@@ -45,3 +45,12 @@
     display: inline-block;
   }
 }
+
+#side-drawer .logo { height: $app-bar-tablet-height; }
+
+.app-bar {
+  height: $app-bar-tablet-height;
+
+  .action { top: 8px; }
+  .title { line-height: $app-bar-tablet-height; }
+}
