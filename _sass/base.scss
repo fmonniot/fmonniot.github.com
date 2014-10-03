@@ -340,10 +340,6 @@ table {
 .cv {
   margin-bottom: 8px;
 
-  h3 {
-    margin: 0;
-  }
-
   p {
     margin-bottom: 0;
   }
@@ -355,10 +351,6 @@ table {
   h2 {
     margin-top: 8px;
     margin-bottom: 24px;
-  }
-
-  &.skills, &.languages, &.interest {
-    .span2 { font-weight: 700; }
   }
 }
 

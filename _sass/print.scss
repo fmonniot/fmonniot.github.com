@@ -1,5 +1,7 @@
 /// Styles only set in print
 
+strong { font-weight: 700; }
+
 body {
   text-indent: 0;
   font-size: 10pt;
@@ -14,6 +16,8 @@ body {
 }
 
 .vcard {
+  .url { color: $vcard-infos-color; }
+
   .fn a{
     color: $vcard-fn-color;
     font-size: 2em;
@@ -24,7 +28,7 @@ body {
     color: $vcard-role-color;
     font-size: 1.3em;
   }
-  .adr, .tel, .email, .note {
+  .adr, .tel, .email, .note, .website {
     color: $vcard-infos-color;
     clear: right;
     float: right;
@@ -43,6 +47,16 @@ section { clear: both; }
 /// Disable shadow (print bug in chrome)
 .highlight {
   box-shadow: none;
+}
+
+.cv {
+  .span2 { padding: 0; }
+  div { margin-bottom: 8px; }
+
+  header .span2 { margin-top: 12px + ($leading-subhead2 / 2); }
+  h2 { margin-top: 12px; margin-bottom: 4px; padding-top: 0; }
+
+  section { margin-bottom: 0; }
 }
 
 // No scroll on paper

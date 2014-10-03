@@ -69,7 +69,7 @@ def build_pdf(input_name, output_name)
   kit = PDFKit.new(page, 'page-size' => 'A4',
                       'margin-top' => '0.5in',
                       'margin-right' => '0.5in',
-                      'margin-bottom' => '0.5in',
+                      'margin-bottom' => '0.4in',
                       'margin-left' => '0.5in',
                       'print-media-type' => true )
 
