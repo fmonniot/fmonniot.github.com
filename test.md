@@ -62,7 +62,7 @@ Strikethrough uses two tildes. ~~Scratch this.~~
 ```
 1. First ordered list item
 2. Another item
-⋅⋅* Unordered sub-list. 
+⋅⋅* Unordered sub-list.
 1. Actual numbers don't matter, just that it's a number
 ⋅⋅1. Ordered sub-list
 4. And another item.
@@ -74,7 +74,7 @@ Strikethrough uses two tildes. ~~Scratch this.~~
 
 1. First ordered list item
 2. Another item
-  * Unordered sub-list. 
+  * Unordered sub-list.
 1. Actual numbers don't matter, just that it's a number
   1. Ordered sub-list
 4. And another item.
@@ -132,7 +132,7 @@ Here's my photo (hover to see the title text):
 
 Inline-style:
 
-![alt text](/images/me.jpg "Logo Title Text 1")
+![alt text](/images/reunion.jpg "Logo Title Text 1")
 
 Reference-style:
 
@@ -142,16 +142,16 @@ Without padding:
 
 <div><img src="/images/reunion.jpg" alt="Reunion by Romain Guy" title="Reunion by Romain Guy"></div>
 
-[logo]: /images/me.jpg "Logo Title Text 1"
+[logo]: /images/reunion.jpg "Logo Title Text 1"
 ```
 
 Here's my photo (hover to see the title text):
 
-Inline-style: 
+Inline-style:
 
-![alt text](/images/me.jpg "Logo Title Text 1")
+![alt text](/images/reunion.jpg "Logo Title Text 1")
 
-Reference-style: 
+Reference-style:
 
 ![alt text][logo]
 
@@ -159,7 +159,7 @@ Without padding:
 
 <div><img src="/images/reunion.jpg" alt="Reunion by Romain Guy" title="Reunion by Romain Guy"></div>
 
-[logo]: /images/me.jpg "Logo Title Text 1"
+[logo]: /images/reunion.jpg "Logo Title Text 1"
 
 # Code and Syntax Highlighting
 
@@ -179,12 +179,12 @@ Blocks of code are either fenced by lines with three back-ticks <code>```</code>
 var s = "JavaScript syntax highlighting";
 alert(s);
 ```
- 
+
 ```python
 s = "Python syntax highlighting"
 print s
 ```
- 
+
 ```
 No language indicated, so no syntax highlighting.
 But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
@@ -267,7 +267,7 @@ A very long table that could have caused some problems.
 
 Quote break.
 
-> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote. 
+> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote.
 ```
 
 > Blockquotes are very handy in email to emulate reply text.
@@ -277,11 +277,11 @@ Quote break.
 
 Quote break.
 
-> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote. 
+> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote.
 
 # Inline HTML
 
-You can also use raw HTML in your Markdown, and it'll mostly work pretty well. 
+You can also use raw HTML in your Markdown, and it'll mostly work pretty well.
 
 ```
 <dl>
