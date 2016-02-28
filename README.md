@@ -1,4 +1,5 @@
-My personal website, visible at http://francois.monniot.eu (currently only french language)
+Old version of my personal website which use a holo-like theme.
+This is kept in reference for those who want to implement this type of design.
 
 Tips
 =====
