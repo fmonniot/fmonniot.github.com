@@ -37,7 +37,7 @@ HTML
   puts "new post generated in #{path}"
 end
 
-desc 'generate pdf from html file. args: file, name'
+desc 'generate pdf from html file, args: file, name'
 task :pdf do
   if ENV['file'].nil? || ENV['name'].nil?
     puts 'Usage: rake pdf file="_site/cv/index.html" name="cv_francois_monniot"'
@@ -51,7 +51,7 @@ task :pdf do
   build_pdf(input_name, output_name)
 end
 
-desc 'generate resume pdf'
+desc 'generate resume and cv pdfs'
 task :resume do
   puts "generate pdfs (resume|cv)_francois_monniot.pdf"
   build_pdf("_site/cv/index.html","docs/cv_francois_monniot.pdf")
