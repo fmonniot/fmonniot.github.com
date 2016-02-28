@@ -40,8 +40,8 @@ date: 2015-03-25 10:44:00 +0100
 
 # Prepare your hypervisor
 
-In this article, which serve as a reminder for when I'll have to reinstall it, I'll describe how to configure a basic installation of a [proxmox](https://www.proxmox.com) based server (mine is hosting by [Online.net](https://www.online.net)).
-As Online provide a server with proxmox already installed, this article doesn't describe how to install proxmox (you can find some instruction on the wiki: https://pve.proxmox.com/wiki/Installation) and start with a fresh proxmox installation.
+In this article, which serve as a reminder for when I'll have to reinstall a proxmox based server, I'll describe how to configure a basic installation of a [proxmox](https://www.proxmox.com) based server (mine is hosting by [Online.net](https://www.online.net)).
+As Online provide a server with proxmox already installed, this article doesn't describe how to install proxmox (you can find some instruction on [their wiki](https://pve.proxmox.com/wiki/Installation)) and start with a fresh proxmox installation.
 
 Note: Some sections don't have explanation, if it's bothering you please [open an issue on GitHub](https://github.com/fmonniot/fmonniot.github.com/issues) and I'll try to explain it to you (and update this page accordingly).
 

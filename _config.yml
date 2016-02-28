@@ -1,23 +1,15 @@
 gems:
   - jekyll-sitemap
   - jekyll-mentions
+  - jekyll-paginate
 exclude:
   - Rakefile
   - pids
   - Gemfile*
 
-markdown: redcarpet
-redcarpet:
-  extensions:
-    - "no_intra_emphasis"
-    - "autolink"
-    - "tables"
-    - "with_toc_data"
-    - "strikethrough"
-    - "superscript"
-    - "footnotes"
-    - "hard_wrap"
+markdown: kramdown
 
+future: true
 permalink: pretty
 paginate: 150 # Only to have access to paginator.total_posts
 

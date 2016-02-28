@@ -2,3 +2,7 @@
 // --------------------------------------------------
 
 .wrapper { width: 1120px; }
+
+.code-title + .highlighter-rouge .highlight {
+  padding-top: 0px;
+}

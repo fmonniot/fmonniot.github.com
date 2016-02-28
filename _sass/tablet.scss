@@ -16,6 +16,10 @@
   padding: 0 8px;
 }
 
+.code-title + .highlighter-rouge .highlight {
+  padding-top: 16px;
+}
+
 .page-footer {
   .previous.narrow {
     span, div { display: block; }

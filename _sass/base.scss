@@ -393,7 +393,6 @@ pre {
   border-bottom: 1px solid $highlight-title-border-color;
 }
 
-.code-title + .highlight {
-  margin-top: 0;
-  padding-top: 0;
+.code-title + .highlighter-rouge {
+  margin-top: -16px;
 }

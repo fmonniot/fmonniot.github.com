@@ -12,29 +12,45 @@ This is intended as a quick reference and showcase. For more complete info, see
 
 ## Table of Contents
 [Headers](#headers)
+
 [Emphasis](#emphasis)
+
 [Lists](#lists)
+
 [Links](#links)
+
 [Images](#images)
+
 [Code and Syntax Highlighting](#code-and-syntax-highlighting)
+
 [Tables](#tables)
+
 [Blockquotes](#blockquotes)
+
 [Inline HTML](#inline-html)
+
 [Horizontal Rule](#horizontal-rule)
+
 [Line Breaks](#line-breaks)
 
 # Headers
 
 ```
 # Header Level 1
+
 ## Header Level 2
+
 ### Header Level 3
+
 #### Header Level 4
 ```
 
 # Header Level 1
+
 ## Header Level 2
+
 ### Header Level 3
+
 #### Header Level 4
 
 ----
