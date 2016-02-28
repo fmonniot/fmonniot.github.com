@@ -60,10 +60,13 @@ end
 
 def build_pdf(input_name, output_name)
   require 'pdfkit'
+  require 'pathname'
 
   input = File.open(input_name)
   page = input.read
   input.close
+
+  css_custom_file = '_site/css/' + File.basename(output_name, File.extname(output_name)) + '.css'
 
   # PDFKit.new takes the page HTML and any options for wkhtmltopdf
   kit = PDFKit.new(page, 'page-size' => 'A4',
@@ -74,6 +77,9 @@ def build_pdf(input_name, output_name)
                       'print-media-type' => true )
 
   kit.stylesheets << '_site/css/pdf.css'
+  if(File.exist? css_custom_file)
+    kit.stylesheets << css_custom_file
+  end
 
   # Save the PDF to a file
   kit.to_file(output_name)

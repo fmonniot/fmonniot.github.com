@@ -10,7 +10,30 @@
 @import "tablet.scss";
 @import "print.scss";
 
-// Fix a bug in pdf generation
+// Add some pdf custom adjustement (to satisfy wkhtmltopdf)
 .wrapper {
   padding-top: 5px;
+}
+
+.cv {
+  margin-bottom: 0px;
+
+  div { margin-bottom: 6px; }
+
+  header { margin-top: 8px; }
+  header .span2 { margin-top: 5px + ($leading-subhead2*1.2 / 2); }
+  h2 {
+    font-size: $font-size-title * 1.2;
+    margin-top: 8px;
+    margin-bottom: 2px;
+    padding-top: 0;
+  }
+
+  section { margin-bottom: 14px; }
+}
+
+.vcard {
+  .fn a {
+    font-size: 2.5em;
+  }
 }

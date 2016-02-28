@@ -7,6 +7,10 @@ body {
   font-size: 10pt;
   font-weight: normal;
   line-height: 12pt;
+
+  // A serif font have a better render on paper
+  font-family: "Times";
+  line-height: $leading-body1 - 7px;
 }
 
 p {
