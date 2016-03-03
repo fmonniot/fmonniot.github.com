@@ -8,15 +8,46 @@ appbar:
   title: Resume
 ---
 <address class="vcard only-print">
-    <p class="adr">
-        <span class="country">France</span>
-    </p>
     <p class="tel">mobile: 1-669-238-7828</p>
-    <p class="email">email: <a href="mailto:francoismonniot@gmail.com" class="url">francoismonniot@gmail.com</a></p>
-    <p class="website">web: <a href="http://francois.monniot.eu" class="url">http://francois.monniot.eu</a></p>
+    <p class="email">email: <a href="mailto:francoismonniot@gmail.com" class="url">francois@monniot.eu</a></p>
+    <p class="website">website: <a href="http://francois.monniot.eu" class="url">http://francois.monniot.eu</a></p>
     <p class="fn"><a class="url" href="#">François Monniot</a><p>
-    <p class="role">M.S. Telecom Engineering Student<p>
+    <p class="role">Software Engineer<p>
 </address>
+
+<section class="cv professional-exp">
+    <header>
+        <div class="span2"></div>
+        <h2 class="span10">Work Experience</h2>
+    </header>
+    <div>
+        <p class="span2">Jan – Jul 2016</p>
+        <p class="span10">
+            <strong>Software Development</strong>, <em>Samsung Semiconducor Inc</em>, San Jose, California<br>
+            Working in the data pipeline team at <a href="https://samsungsami.io">Samsung SAMI</a>.<br/>
+            Providing new possibility for developers to use and access IoT data via the SAMI platform.
+        </p>
+    </div>
+    <div>
+        <p class="span2">Feb – Jul 2015</p>
+        <p class="span10">
+            <strong>Video Games Development</strong>, <em>Metidia</em>, Paris, France.<br>
+            Worked on the development of the video game <a href="http://metidia.com/vinoga/">Vinoga</a>, a video game
+            in the browser which take the farmville concept to the wine world and let you buy the wine you created in game.<br/>
+            Was in charge of implementing new functionalities and maintaining the client (Backbone.js/DOM, CreateJS/Canvas) and the backend (Sails/node.js).
+            Designed the underlying infrastructure to support player's growth (10k/month) using container on AWS.
+        </p>
+    </div>
+    <div>
+        <p class="span2">May – Aug 2013</p>
+        <p class="span10">
+            <strong>Java Development</strong>, <em>Alter Frame</em>, Versailles, France.<br>
+            Learned a new techonology (JavaFX) and successfully delivered the product during this internship.
+            Brought new agile methodology and oriented the company towards mobile, cloud and big data processing.
+            Evangelized tests and added many of them on newer and older projects.
+        </p>
+    </div>
+</section>
 
 <section class="cv education">
     <header>
@@ -39,7 +70,11 @@ appbar:
     </header>
     <div>
         <p class="span2">Programming</p>
-        <p class="span10">Java, Scala; Hadoop ecosystem, Cassandra</p>
+        <p class="span10">Java, Scala, Ruby, Go</p>
+    </div>
+    <div>
+      <p class="span2">Platforms</p>
+      <p class="span10">Cassandra, Redis, Elasticsearch, Hadoop ecosystem, Android</p>
     </div>
     <div>
         <p class="span2">Web Programming</p>
@@ -47,40 +82,15 @@ appbar:
     </div>
     <div>
         <p class="span2">OS</p>
-        <p class="span10">GNU/Linux (Debian, ArchLinux) and Mac OSX</p>
+        <p class="span10">GNU/Linux (Debian, ArchLinux), Mac OSX</p>
     </div>
     <div>
         <p class="span2">System Administration</p>
-        <p class="span10">Virtualization/Container (KVM, OpenVZ and Docker), Proxmox, Puppet and Elasticsearch</p>
+        <p class="span10">Virtualization/Container (KVM, OpenVZ and Docker), Puppet, AWS</p>
     </div>
     <div>
         <p class="span2">Other</p>
-        <p class="span10">Nginx, SQL and Git</p>
-    </div>
-</section>
-
-<section class="cv professional-exp">
-    <header>
-        <div class="span2"></div>
-        <h2 class="span10">Work Experience</h2>
-    </header>
-    <div>
-        <p class="span2">Feb – Jul 2015</p>
-        <p class="span10">
-            <strong>Javascript Development</strong>, <em>Metidia</em>, Paris, France.<br>
-            Contributed to the development of the video game <a href="http://metidia.com/vinoga/">Vinoga</a>.<br/>
-            In charge of implementing new functionality and maintaining the client (Backbone, CreateJS) and the backend (node.js, Sails). <br/>
-            Designed the new server infrastructure to support player's growth.
-        </p>
-    </div>
-    <div>
-        <p class="span2">May – Aug 2013</p>
-        <p class="span10">
-            <strong>Java Development</strong>, <em>Alter Frame</em>, Versailles, France.<br>
-            Learned a new techonology (JavaFX) and successfully delivered the product during this internship.<br/>
-            Brought new methodology and oriented company towards mobile, cloud and big data.<br/>
-            Evangelized tests and create them on new projects.
-        </p>
+        <p class="span10">Nginx, SQL, Git, Bash</p>
     </div>
 </section>
 
@@ -90,9 +100,11 @@ appbar:
         <h2 class="span10">Related experience</h2>
     </header>
     <div>
-        <p class="span2">2011 – Present</p>
+        <p class="span2">2011 – 2015</p>
         <p class="span10">
-            <strong>Treasurer 2012-2013, Software developer, System Administrator</strong>, <em>MiNET student association</em>, Internet Provider (700+ subscribers).<br/>
+            <strong>Treasurer 2012-2013</strong>, <em>MiNET student association</em>, Internet Provider (700+ subscribers).<br/>
+            <strong>Software developer, System Administrator</strong><br/>
+
             Managed a budget of 40k€ and an event of 1000 people.<br/>
             Virtualized servers with OpenVZ/KVM managed by Proxmox.<br/>
             Maintained and improves the user management system based on Ruby on Rails.<br/>
@@ -106,7 +118,7 @@ appbar:
         <div class="span2"></div>
         <h2 class="span10">Personal Projects</h2>
     </header>
-    <div class="no-print">
+    <div>
         <p class="span2">Sep 2014</p>
         <p class="span10">
             <strong>MiNET OAuth Provider</strong><br/>
@@ -117,14 +129,15 @@ appbar:
         <p class="span2">Mar 2014</p>
         <p class="span10">
             <strong>Trello Blog</strong>, <em>can be found <a href="https://github.com/fabien0102/trelloblog">on GitHub</a>.</em><br/>
-            Created a blog engine on top of the Trello platform to minimize the cost of a blog (potentially no cost to deploy).
+            Created a blog engine on top of the Trello platform to minimize the cost of a blog (potentially no cost to deploy) with Angular.js.
         </p>
     </div>
     <div>
         <p class="span2">Nov 2013 – Feb 2014</p>
         <p class="span10">
             <strong>Directory</strong>, <em>can be found <a href="https://github.com/fmonniot/directory">on GitHub</a>.</em><br/>
-            Development of a directory using Ruby on Rails, AngularJS and ElasticSearch<br/>
+            Development of a directory using Ruby on Rails, AngularJS and ElasticSearch to let student of Telecom SudParis find
+            one of their peer (by using their initial or complete name).
         </p>
     </div>
 </section>
@@ -141,7 +154,7 @@ appbar:
     <div>
         <p class="span2">English</p>
         <p class="span10">
-            Upper intermediate (B2 European level, TOEIC 955/990, Lived 2 months in London)
+            Fluent (B2 European level, TOEIC 955/990, Living in California)
         </p>
     </div>
 </section>

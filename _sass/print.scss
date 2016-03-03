@@ -6,7 +6,6 @@ body {
   text-indent: 0;
   font-size: 10pt;
   font-weight: normal;
-  line-height: 12pt;
 
   // A serif font have a better render on paper
   font-family: "Times";
@@ -27,6 +26,9 @@ p {
 }
 
 .vcard {
+
+  margin-bottom: 16px;
+
   .url { color: $vcard-infos-color; }
 
   .fn {
@@ -34,14 +36,14 @@ p {
 
     a {
       color: $vcard-fn-color;
-      font-size: 2em;
+      font-size: 2.2em;
       font-style: normal;
       font-weight: lighter;
     }
   }
   .role {
     color: $vcard-role-color;
-    font-size: 1.3em;
+    font-size: 1.5em;
   }
   .adr, .tel, .email, .note, .website {
     color: $vcard-infos-color;
@@ -69,6 +71,7 @@ section { clear: both; }
 
   .span2 { padding: 0; }
   div { margin-bottom: 6px; }
+  p { text-align: justify; }
 
   header .span2 { margin-top: 5px + ($leading-subhead2 / 2); }
   h2 { margin-top: 5px; margin-bottom: 2px; padding-top: 0; }
