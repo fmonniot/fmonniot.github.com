@@ -67,14 +67,14 @@ section { clear: both; }
 }
 
 .cv {
-  margin-bottom: -6px;
+  // margin-bottom: -6px;
 
   .span2 { padding: 0; }
-  div { margin-bottom: 6px; }
+  // div { margin-bottom: 6px; }
   p { text-align: justify; }
 
-  header .span2 { margin-top: 5px + ($leading-subhead2 / 2); }
-  h2 { margin-top: 5px; margin-bottom: 2px; padding-top: 0; }
+  // header .span2 { margin-top: 5px + ($leading-subhead2 / 2); }
+  // h2 { margin-top: 5px; margin-bottom: 2px; padding-top: 0; }
 
   section { margin-bottom: 0; }
 
