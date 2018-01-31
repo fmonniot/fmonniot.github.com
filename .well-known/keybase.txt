@@ -1,0 +1,55 @@
+==================================================================
+https://keybase.io/fmonniot
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://francois.monniot.eu
+  * I am fmonniot (https://keybase.io/fmonniot) on keybase.
+  * I have a public key ASB7QCqaDi9y8PPLttohHudiDMQ3Ys7Y-Vv5vnw2XzYCYQo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01207b402a9a0e2f72f0f3cbb6da211ee7620cc43762ced8f95bf9be7c365f3602610a",
+      "host": "keybase.io",
+      "kid": "01207b402a9a0e2f72f0f3cbb6da211ee7620cc43762ced8f95bf9be7c365f3602610a",
+      "uid": "387aa67cf58d9143038b767286a48a19",
+      "username": "fmonniot"
+    },
+    "merkle_root": {
+      "ctime": 1517420275,
+      "hash": "7ae00a1fc98f9d6cb46e275c055371653c02b4794eead0b340e4b65942f16335259b4ed01514908d82bbf172a47b015a26f1eca6e4144cedec9a54efca14687d",
+      "hash_meta": "2b5d6fe05caf7e20f9e950641fc7b0b91bec10303c3a3430c6f7c18680da0281",
+      "seqno": 2011697
+    },
+    "service": {
+      "hostname": "francois.monniot.eu",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "1.0.39"
+  },
+  "ctime": 1517420309,
+  "expire_in": 504576000,
+  "prev": "69976750dc78d6b27912aa7e9a75adb6ee36f10488827c362127b855d844de5a",
+  "seqno": 5,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEge0Aqmg4vcvDzy7baIR7nYgzEN2LO2Plb+b58Nl82AmEKp3BheWxvYWTFA0t7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTIwN2I0MDJhOWEwZTJmNzJmMGYzY2JiNmRhMjExZWU3NjIwY2M0Mzc2MmNlZDhmOTViZjliZTdjMzY1ZjM2MDI2MTBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwN2I0MDJhOWEwZTJmNzJmMGYzY2JiNmRhMjExZWU3NjIwY2M0Mzc2MmNlZDhmOTViZjliZTdjMzY1ZjM2MDI2MTBhIiwidWlkIjoiMzg3YWE2N2NmNThkOTE0MzAzOGI3NjcyODZhNDhhMTkiLCJ1c2VybmFtZSI6ImZtb25uaW90In0sIm1lcmtsZV9yb290Ijp7ImN0aW1lIjoxNTE3NDIwMjc1LCJoYXNoIjoiN2FlMDBhMWZjOThmOWQ2Y2I0NmUyNzVjMDU1MzcxNjUzYzAyYjQ3OTRlZWFkMGIzNDBlNGI2NTk0MmYxNjMzNTI1OWI0ZWQwMTUxNDkwOGQ4MmJiZjE3MmE0N2IwMTVhMjZmMWVjYTZlNDE0NGNlZGVjOWE1NGVmY2ExNDY4N2QiLCJoYXNoX21ldGEiOiIyYjVkNmZlMDVjYWY3ZTIwZjllOTUwNjQxZmM3YjBiOTFiZWMxMDMwM2MzYTM0MzBjNmY3YzE4NjgwZGEwMjgxIiwic2Vxbm8iOjIwMTE2OTd9LCJzZXJ2aWNlIjp7Imhvc3RuYW1lIjoiZnJhbmNvaXMubW9ubmlvdC5ldSIsInByb3RvY29sIjoiaHR0cHM6In0sInR5cGUiOiJ3ZWJfc2VydmljZV9iaW5kaW5nIiwidmVyc2lvbiI6MX0sImNsaWVudCI6eyJuYW1lIjoia2V5YmFzZS5pbyBnbyBjbGllbnQiLCJ2ZXJzaW9uIjoiMS4wLjM5In0sImN0aW1lIjoxNTE3NDIwMzA5LCJleHBpcmVfaW4iOjUwNDU3NjAwMCwicHJldiI6IjY5OTc2NzUwZGM3OGQ2YjI3OTEyYWE3ZTlhNzVhZGI2ZWUzNmYxMDQ4ODgyN2MzNjIxMjdiODU1ZDg0NGRlNWEiLCJzZXFubyI6NSwidGFnIjoic2lnbmF0dXJlIn2jc2lnxEDtwSsHWKvoT9SmgmN1Kr9YbeURsd1Sitou50kP6KdHI/B683CChR3hJUhDEypd7O641TMOwzvR5U27VLTQWjELqHNpZ190eXBlIKRoYXNogqR0eXBlCKV2YWx1ZcQgIdiVx5FpDTYN5i0GiWz7NYn03vzOxnWdIZ+veCyiceqjdGFnzQICp3ZlcnNpb24B
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/fmonniot
+
+==================================================================
