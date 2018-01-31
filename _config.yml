@@ -2,10 +2,14 @@ gems:
   - jekyll-sitemap
   - jekyll-mentions
   - jekyll-paginate
+
 exclude:
   - Rakefile
   - pids
   - Gemfile*
+
+include:
+  - .well-known
 
 markdown: kramdown
 
