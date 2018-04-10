@@ -10,3 +10,4 @@ More a memo than a post on which I list a bunch of curated "awesome lists", to e
 - [CaitieM's Resources for Getting Started with Distributed Systems](https://caitiem.com/2017/09/07/getting-started-with-distributed-systems/)
 - [Will Larson's favorite technical papers](https://lethain.com/some-of-my-favorite-technical-papers/)
 - [Dan Luu's post mortem list](https://github.com/danluu/post-mortems) (make sure to look at PR too)
+- [Dan Creswell's distributed system reading list](https://dancres.github.io/Pages/)
