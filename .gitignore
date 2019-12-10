@@ -8,3 +8,4 @@ _tmp/
 # tmp files
 .bundle/*
 .sass-cache/*
+.jekyll-cache
