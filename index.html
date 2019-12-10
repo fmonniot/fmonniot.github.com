@@ -1,19 +1,6 @@
 ---
 title: Home
 ---
-<section>
- <h1>Hi there, I'm François</h1>
- <p>I'm a web based application engineer. I love to build thing that use the web: REST api, web front-end or android application.</p>
- <p>I love the open source mindset and try to make all my side projects available <a href="{{ site.author.github }}">on GitHub</a>.</p>
-</section>
-
-<section>
-  <h1>Contact</h1>
-  <p>
-    You can found me on <a href="{{ site.author.github }}">GitHub</a> or <a href="{{ site.author.linkedin }}">LinkedIn</a>.
-    Or you can contact me on <a href="{{ site.author.twitter }}">Twitter</a> or by <a href="mailto:{{ site.author.email }}">mail</a>.
-  </p>
-</section>
 
 {% if paginator.total_posts > 0 %}
 <section id="publications">
@@ -25,3 +12,11 @@ title: Home
     </ul>
  </section>
 {% endif %}
+
+<section>
+    <h1>Contact</h1>
+    <p>
+      You can found me on <a href="{{ site.author.github }}">GitHub</a> or <a href="{{ site.author.linkedin }}">LinkedIn</a>.
+      Or you can contact me on <a href="{{ site.author.twitter }}">Twitter</a> or by <a href="mailto:{{ site.author.email }}">mail</a>.
+    </p>
+  </section>
