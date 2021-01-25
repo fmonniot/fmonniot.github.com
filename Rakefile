@@ -51,10 +51,9 @@ task :pdf do
   build_pdf(input_name, output_name)
 end
 
-desc 'generate resume and cv pdfs'
+desc 'generate resume pdf'
 task :resume do
-  puts "generate pdfs (resume|cv)_francois_monniot.pdf"
-  build_pdf("_site/cv/index.html","docs/cv_francois_monniot.pdf")
+  puts "generate pdfs resume_francois_monniot.pdf"
   build_pdf("_site/resume/index.html","docs/resume_francois_monniot.pdf")
 end
 
@@ -70,7 +69,7 @@ def build_pdf(input_name, output_name)
 
   # PDFKit.new takes the page HTML and any options for wkhtmltopdf
   kit = PDFKit.new(page, 'page-size' => 'A4',
-                      'margin-top' => '0.5in',
+                      'margin-top' => '0.4in',
                       'margin-right' => '0.5in',
                       'margin-bottom' => '0.4in',
                       'margin-left' => '0.5in',
