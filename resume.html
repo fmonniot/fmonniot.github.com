@@ -1,171 +1,65 @@
 ---
-title: François Monniot - Resume
-appbar:
-  actions:
-    - href: /docs/resume_francois_monniot.pdf
-      title: Download PDF
-      icon: download
-  title: Resume
+nav: /resume/
+permalink: /resume/
+title: François Monniot — Résumé
+description: Résumé of François Monniot, software engineer — Samsung SmartThings, ARTIK Cloud, and more.
 ---
-<address class="vcard only-print">
-    <p class="tel">mobile: +1 530 407 8905</p>
-    <p class="email">email: <a href="mailto:francois@monniot.eu" class="url">francois@monniot.eu</a></p>
-    <p class="website">website: <a href="https://francois.monniot.eu" class="url">http://francois.monniot.eu</a></p>
-    <p class="github">GitHub: <a href="https://github.com/fmonniot" class="url">fmonniot</a></p>
-    <p class="fn"><a class="url" href="#">François Monniot</a><p>
-    <p class="role">Software Engineer<p>
-</address>
+<div class="inner">
+  <div class="resume-head">
+    <div>
+      <div class="kicker">Curriculum Vitæ</div>
+      <h1 class="title" style="font-size:44px;">{{ site.profile.name }}</h1>
+      <p class="lede" style="font-size:17px;margin-top:14px;">{{ site.profile.role }} · {{ site.profile.location }}</p>
+    </div>
+    <a class="btn-pdf" href="/docs/resume_francois_monniot.pdf">
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 1v8M3.5 6L7 9.5 10.5 6M2 12.5h10"/></svg>
+      Download PDF
+    </a>
+  </div>
 
-<section class="cv professional-exp">
-    <header>
-        <div class="span2"></div>
-        <h2 class="span10">Work Experience</h2>
-    </header>
+  <div class="section-h">Experience <span class="ct">{{ site.data.resume.experience.span }}</span></div>
+  {% for job in site.data.resume.experience.jobs %}
+  <div class="job">
+    <div class="when">{{ job.when }}</div>
     <div>
-        <p class="span2">Jan 2020 - Current</p>
-        <p class="span10">
-            <strong>Senior Software Developper</strong>, <em>Samsung SmartThings</em>, San Francisco, California<br/>
-            Working in the MQTT team at <a href="https://smartthings.developer.samsung.com/">Samsung SmartThings</a>.
-        </p>
+      <div class="role">{{ job.role }}</div>
+      <div class="org"><b>{{ job.org }}</b> — {{ job.location }}</div>
+      <ul>{% for b in job.bullets %}<li>{{ b }}</li>{% endfor %}</ul>
     </div>
-    <div>
-        <p class="span2">Jan 2018 - Dec 2019</p>
-        <p class="span10">
-            <strong>Senior Software Developper</strong>, <em>Samsung Research America</em>, San Francisco, California<br/>
-            Working in the Device Cloud Services team at <a href="https://smartthings.developer.samsung.com/">Samsung SmartThings</a>.<br/>
-            Implement the MQTT offering on the Cloud side in partnership with a globally distributed team for the client side.<br/>
-            Includes point-to-point messaging, performance testing and optimization, Kubernetes support for long-lived
-            TCP connections, distributed tracing and support for CBOR Web Token.
-        </p>
-    </div>
-    <div>
-        <p class="span2">Sept 2016 – Jan 2018</p>
-        <p class="span10">
-            <strong>Software Developper</strong>, <em>Samsung Semiconducor Inc</em>, Paris, France<br/>
-            Worked in the Paris team at Samsung ARTIK Cloud.<br/>
-            Provided new possibility for developers to use and access IoT data via the ARTIK platform.<br/>
-            Took ownership of the accounts service by implementing new OAuth method,
-            providing security fixes and making the service available cross region.<br/>
-            Designed and implemented the new ARTIK Cloud's API Gateway service,
-            alongside all the infrastructure to serve the documentation and SDK (based on OpenAPI)
-        </p>
-    </div>
-    <div>
-        <p class="span2">Jan – Jul 2016</p>
-        <p class="span10">
-            <strong>Intern Software Developper</strong>, <em>Samsung Semiconducor Inc</em>, San Jose, California<br>
-            Worked in the data pipeline team at Samsung ARTIK Cloud.<br/>
-            Provided better scalability by moving a set of service to Redis Cluster,<br/> improved robustness by
-            embracing the asynchronous way with error and failure handling.<br/>
-            Prepared the system to replicate redis operation across datacenter.
-        </p>
-    </div>
-    <div>
-        <p class="span2">Feb – Jul 2015</p>
-        <p class="span10">
-            <strong>Intern Video Games Developper</strong>, <em>Metidia</em>, Paris, France.<br>
-            Worked on the development of the video game Vinoga, a video game
-            in the browser which take the farmville concept to the wine world and let you buy the wine you created in game.<br/>
-            Was in charge of implementing new functionalities and maintaining the client (Backbone.js/DOM, CreateJS/Canvas) and the backend (Sails/node.js).
-            Designed the underlying infrastructure to support player's growth (10k/month) using container on AWS.
-        </p>
-    </div>
-    <div>
-        <p class="span2">May – Aug 2013</p>
-        <p class="span10">
-            <strong>Intern Java Developper</strong>, <em>Alter Frame</em>, Versailles, France.<br>
-            Learned a new techonology (JavaFX) and successfully delivered the product during this internship.
-            Brought new agile methodology and oriented the company towards mobile, cloud and big data processing.
-            Evangelized tests and added many of them on newer and older projects.
-        </p>
-    </div>
-</section>
+  </div>
+  {% endfor %}
 
-<section class="cv education">
-    <header>
-        <div class="span2"></div>
-        <h2 class="span10">Education</h2>
-    </header>
-    <div>
-        <p class="span2">2011 – 2015</p>
-        <p class="span10">
-            <strong>M.S. Telecom Engineering</strong>, <em>Institut Mines-Télécom</em>, France.<br>
-            Master degree specialising in <em>Distributed Systems Architecture</em>.
-        </p>
-    </div>
-</section>
+  <div class="section-h">Skills</div>
+  {% for s in site.data.resume.skills %}
+  <div class="def"><div class="k">{{ s.k }}</div><div class="v">{{ s.v }}</div></div>
+  {% endfor %}
 
-<section class="cv skills">
-    <header>
-        <div class="span2"></div>
-        <h2 class="span10">Skills</h2>
-    </header>
+  <div class="section-h">Education</div>
+  {% for job in site.data.resume.education %}
+  <div class="job">
+    <div class="when">{{ job.when }}</div>
     <div>
-        <p class="span2">Backend Programming</p>
-        <p class="span10">Scala, Java, Rust</p>
+      <div class="role">{{ job.role }}</div>
+      <div class="org"><b>{{ job.org }}</b> — {{ job.location }}</div>
+      <ul>{% for b in job.bullets %}<li>{{ b }}</li>{% endfor %}</ul>
     </div>
-    <div>
-      <p class="span2">Platforms</p>
-      <p class="span10">DynamoDB, Redis, Kubernetes, Akka, Kafka, Kinesis, AWS</p>
-    </div>
-    <div>
-        <p class="span2">Web Programming</p>
-        <p class="span10">Javascript, Elm, React</p>
-    </div>
-    <div>
-        <p class="span2">OS</p>
-        <p class="span10">Ubuntu, macOS</p>
-    </div>
-</section>
+  </div>
+  {% endfor %}
 
-<section class="cv related-exp">
-    <header>
-        <div class="span2"></div>
-        <h2 class="span10">Related experience</h2>
-    </header>
+  <div class="section-h">Related experience</div>
+  {% for job in site.data.resume.related %}
+  <div class="job">
+    <div class="when">{{ job.when }}</div>
+    <div>
+      <div class="role">{{ job.role }}</div>
+      <div class="org"><b>{{ job.org }}</b> — {{ job.location }}</div>
+      <ul>{% for b in job.bullets %}<li>{{ b }}</li>{% endfor %}</ul>
+    </div>
+  </div>
+  {% endfor %}
 
-    <div>
-        <p class="span2">2011 – 2015</p>
-        <p class="span10">
-            <strong>Treasurer 2012-2013</strong>, <em>MiNET student association</em>, Internet Provider (700+ subscribers).<br/>
-            <strong>Software developer, System Administrator</strong><br/>
-
-            Managed a budget of 40k€ and an event of 1000 people.<br/>
-            Virtualized servers with OpenVZ/KVM managed by Proxmox.<br/>
-            Maintained and improves the user management system based on Ruby on Rails.<br/>
-            Successfully centralized log with syslog, Logstash and Elasticsearch.
-        </p>
-    </div>
-</section>
-
-<section class="cv languages">
-    <header>
-        <div class="span2"></div>
-        <h2 class="span10">Languages</h2>
-    </header>
-    <div>
-        <p class="span2">French</p>
-        <p class="span10">Mother tongue</p>
-    </div>
-    <div>
-        <p class="span2">English</p>
-        <p class="span10">
-            Fluent (B2 European level, TOEIC 955/990, Living in California since 2018)
-        </p>
-    </div>
-</section>
-
-<section class="cv interest">
-    <header>
-        <div class="span2"></div>
-        <h2 class="span10">Other Interests and Activities</h2>
-    </header>
-    <div>
-        <p class="span2">Sport</p>
-        <p class="span10">Archery (20+ years)</p>
-    </div>
-    <div>
-        <p class="span2"></p>
-        <p class="span10">Open Source Software</p>
-    </div>
-</section>
+  <div class="section-h">Languages &amp; Interests</div>
+  {% for d in site.data.resume.languages_interests %}
+  <div class="def"><div class="k">{{ d.k }}</div><div class="v">{{ d.v }}</div></div>
+  {% endfor %}
+</div>

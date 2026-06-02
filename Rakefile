@@ -54,7 +54,7 @@ end
 desc 'generate resume pdf'
 task :resume do
   puts "generate pdfs resume_francois_monniot.pdf"
-  build_pdf("_site/resume/index.html","docs/resume_francois_monniot.pdf")
+  build_pdf("_site/resume-print/index.html","docs/resume_francois_monniot.pdf")
 end
 
 def build_pdf(input_name, output_name)
@@ -65,8 +65,6 @@ def build_pdf(input_name, output_name)
   page = input.read
   input.close
 
-  css_custom_file = '_site/css/' + File.basename(output_name, File.extname(output_name)) + '.css'
-
   # PDFKit.new takes the page HTML and any options for wkhtmltopdf
   kit = PDFKit.new(page, 'page-size' => 'A4',
                       'margin-top' => '0.4in',
@@ -75,10 +73,8 @@ def build_pdf(input_name, output_name)
                       'margin-left' => '0.5in',
                       'print-media-type' => true )
 
-  kit.stylesheets << '_site/css/pdf.css'
-  if(File.exist? css_custom_file)
-    kit.stylesheets << css_custom_file
-  end
+  # The "Spine" design ships one stylesheet (print rules live inside it).
+  kit.stylesheets << '_site/css/styles.css'
 
   # Save the PDF to a file
   kit.to_file(output_name)

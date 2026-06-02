@@ -1,35 +1,20 @@
 ---
 layout: default
 ---
-<div class="desktop-wrapper">
-  <div class="wrapper">
-    <header>
-      <h1>{{ page.title }}</h1>
-      <p>
-        <date class="subhead">Published on {{ page.date | date: "%-d %B %Y" }}</date>
-        {% comment %}
-        <br/>
-        <date class="subhead">Edited the {{ page.date | date: "%-d %B %Y" }}</date>
-        {% endcomment %}
-      <p>
-    </header>
+<article class="article inner">
+  <a class="back" href="/writing/"><span>←</span> All writing</a>
+  {% if page.kicker %}<div class="kicker">{{ page.kicker }}</div>{% endif %}
+  <h1>{{ page.title }}</h1>
+  {% if page.description %}<p class="dek">{{ page.description }}</p>{% endif %}
+  <div class="by">
+    <span>{{ site.profile.name }}</span>
+    <span>{{ page.date | date: "%-d %B %Y" }}</span>
+    <span>{{ content | number_of_words | divided_by: 200 | plus: 1 }} min read</span>
+  </div>
+
+  <div class="prose">
     {{ content }}
   </div>
-  <footer class="page-footer">
-    {% if page.previous != nil %}
-    <a href="{{ page.previous.url }}" class="previous{% if page.next != nil %} narrow{% endif %}">
-      <img alt="" src="/images/arrow-left.svg">
-      <span>Previous:</span>
-      <div>{{ page.previous.title }}</div>
-    </a>
-    {% endif %}
 
-    {% if page.next != nil %}
-    <a href="{{ page.next.url }}" class="next">
-      <img alt="" src="/images/arrow-right.svg">
-      <span>Next:</span>
-      <div>{{ page.next.title }}</div>
-    </a>
-    {% endif %}
-  </footer>
-</div>
+  <div class="page-foot">Written by {{ site.profile.name }} · <a href="{{ site.profile.github }}">{{ site.profile.github_handle }}</a> · <a href="/writing/">more writing</a></div>
+</article>

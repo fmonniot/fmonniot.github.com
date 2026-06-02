@@ -2,6 +2,8 @@
 layout: post
 title: Installing a Proxmox-based server
 date: 2015-03-25 10:44:00 +0100
+kicker: Infrastructure · Proxmox · Self-hosting
+description: Build notes for turning a fresh Proxmox host into a usable home for services — a dedicated VM network, a NAT firewall, reusable containers, self-signed certificates, an nginx reverse proxy, and LDAP behind it all.
 ---
 
 # Table of Contents

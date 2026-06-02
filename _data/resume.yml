@@ -1,0 +1,99 @@
+# Single source of truth for the résumé — rendered by both resume.html (screen)
+# and resume-print.html (the basis for the generated PDF). Keep them in sync by
+# editing here only.
+
+contact:
+  email:  francois@monniot.eu
+  mobile: "+1 530 407 8905"
+  web:    francois.monniot.eu
+  web_url: https://francois.monniot.eu
+  github: "@fmonniot"
+  github_url: https://github.com/fmonniot
+
+experience:
+  span: 2013 — present
+  jobs:
+    - when: Jan 2020 — Current
+      role: Senior Software Developer
+      org: Samsung SmartThings
+      location: San Francisco, CA
+      bullets:
+        - MQTT messaging infrastructure for connected devices at scale.
+    - when: Jan 2018 — Dec 2019
+      role: Senior Software Developer
+      org: Samsung Research America
+      location: San Francisco, CA
+      bullets:
+        - Implemented the MQTT cloud offering with a globally distributed team.
+        - Point-to-point messaging, performance testing and optimization.
+        - Kubernetes support for long-lived TCP connections.
+        - Distributed tracing and support for CBOR Web Token.
+    - when: Sept 2016 — Jan 2018
+      role: Software Developer
+      org: Samsung Semiconductor Inc
+      location: Paris, France
+      bullets:
+        - Samsung ARTIK Cloud — enabling developers to use and access IoT data.
+        - "Owned the accounts service: new OAuth method, security fixes, cross-region availability."
+        - Designed and built the ARTIK Cloud API Gateway and the OpenAPI docs/SDK infrastructure.
+    - when: Jan — Jul 2016
+      role: Intern Software Developer
+      org: Samsung Semiconductor Inc
+      location: San Jose, CA
+      bullets:
+        - Improved scalability by moving services to Redis Cluster.
+        - Improved robustness with asynchronous error and failure handling.
+        - Prepared cross-datacenter Redis replication.
+    - when: Feb — Jul 2015
+      role: Intern Video Games Developer
+      org: Metidia
+      location: Paris, France
+      bullets:
+        - Built features for the client (Backbone.js, CreateJS/Canvas) and backend (Sails / node.js).
+        - Designed AWS container infrastructure supporting 10k new players / month.
+    - when: May — Aug 2013
+      role: Intern Java Developer
+      org: Alter Frame
+      location: Versailles, France
+      bullets:
+        - Learned JavaFX and delivered the product within the internship.
+        - Brought agile methodology; evangelized testing across new and legacy projects.
+
+skills:
+  - k: Backend
+    v: Scala, Java, Rust
+  - k: Platforms
+    v: DynamoDB, Redis, Kubernetes, Akka, Kafka, Kinesis, AWS
+  - k: Web
+    v: JavaScript, Elm, React
+  - k: OS
+    v: Ubuntu, macOS
+
+education:
+  - when: 2011 — 2015
+    role: M.S. Telecom Engineering
+    org: Institut Mines-Télécom
+    location: France
+    bullets:
+      - Specialising in Distributed Systems Architecture.
+
+related:
+  - when: 2011 — 2015
+    role: Treasurer (2012–2013)
+    org: MiNET student association
+    location: internet provider, 700+ subscribers
+    bullets:
+      - Software developer & system administrator. Managed a 40k€ budget and a 1000-person event.
+      - Virtualized servers with OpenVZ/KVM on Proxmox.
+      - Maintained a Ruby on Rails user-management system.
+      - Centralized logs with syslog, Logstash and Elasticsearch.
+
+languages_interests:
+  - k: French
+    v: Mother tongue
+  - k: English
+    v: Fluent — B2, TOEIC 955/990, in California since 2018
+  - k: Sport
+    v: Archery (20+ years)
+  - k: Community
+    v: Open Source Software

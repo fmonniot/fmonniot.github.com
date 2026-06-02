@@ -2,6 +2,8 @@
 layout: post
 title: Scala's Future.sequence in Java
 date: 2019-10-16 10:00:00 +0900
+kicker: Scala · Java · Concurrency
+description: Porting one of Scala's most useful combinators to Java, and what it teaches you about turning a list of futures into a future of a list.
 ---
 
 I have been using Scala and its `Future` for years now.
