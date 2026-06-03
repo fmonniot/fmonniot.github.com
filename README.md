@@ -111,6 +111,7 @@ readable.
 
 ## Deployment
 
-The site is hosted on GitHub Pages. `_site/` is gitignored — publish by building
-and pushing the output through your usual pipeline (GitHub Actions or a committed
-build), not by committing `_site/` from a local serve.
+The site is hosted on GitHub Pages and deployed automatically via GitHub Actions.
+Push to `master` and [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)
+will build with Jekyll + Ruby 3.3 and publish to Pages. `_site/` is gitignored —
+never commit the build output.
