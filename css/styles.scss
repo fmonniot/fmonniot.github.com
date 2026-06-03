@@ -270,8 +270,8 @@ h1.title {
   .nav a:last-of-type { border: 0; }
   .nav a .no { display: none; }
   .nav a.on { border-bottom: 2px solid var(--accent); }
-  .side-foot { margin-top: 26px; }
-  .contact { grid-auto-flow: column; grid-template-columns: none; gap: 8px 24px; justify-content: start; }
+  .side-foot { margin-top: 12px; padding-top: 0; }
+  .contact { grid-auto-flow: column; grid-template-columns: none; gap: 8px 24px; justify-content: start; padding-top: 12px; }
   .contact .row { grid-template-columns: none; }
   .contact .k { display: none; }
   .colophon { display: none; }
