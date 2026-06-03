@@ -47,6 +47,64 @@ Then open <http://localhost:4000>.
 mise exec ruby@3.3 -- bundle exec jekyll build   # output goes to _site/ (gitignored)
 ```
 
+## Visual testing
+
+[Playwright](https://playwright.dev/) drives a headless Chromium over a matrix of
+four viewports — `desktop` (1920×1080), `laptop` (1440×900), `tablet` (768×1024)
+and `phone` (390×844) — defined in [`playwright.config.ts`](playwright.config.ts).
+The routes under test live in [`tests/routes.ts`](tests/routes.ts): the home,
+writing and résumé pages, plus a **styleguide fixture** (see below) that stands
+in for a full article. Each run starts its own Jekyll on a random free port (so
+it never collides with a `jekyll serve` you already have on `:4000`) and shuts it
+down afterwards.
+
+One-time setup (Node and oxipng are pinned in [`mise.toml`](mise.toml)):
+
+```sh
+mise install                                       # node + oxipng (baseline optimiser)
+mise exec node@22 -- npm install
+mise exec node@22 -- npx playwright install chromium
+```
+
+**Regression testing** — compares every page/viewport against committed
+baselines and fails on any pixel difference (writing a diff image under
+`test-results/`):
+
+```sh
+mise exec node@22 -- npm run test:visual          # check against baselines
+mise exec node@22 -- npm run test:visual:update   # accept intended changes
+mise exec node@22 -- npm run report               # open the HTML diff report
+```
+
+Baselines live in [`tests/visual.spec.ts-snapshots/`](tests/visual.spec.ts-snapshots/)
+and are committed. They are platform-specific (filenames end in `-darwin`); run
+`:update` once on each platform that runs the suite. `:update` automatically runs
+[`scripts/optimize-baselines.mjs`](scripts/optimize-baselines.mjs) afterwards,
+which losslessly re-compresses the PNGs with oxipng (~20% smaller) to keep the
+committed artifacts — and their churn in git history — small. It is lossless and
+idempotent: the decoded pixels are unchanged, so optimised baselines still match
+a fresh render exactly. Run it standalone with `npm run optimize:baselines`; if
+oxipng is missing it warns and skips rather than failing.
+
+**The styleguide fixture** — rather than baseline a full 25k-px article (which
+made the committed PNGs balloon and churn on every redesign), article styling is
+covered by [`_fixtures/styleguide.md`](_fixtures/styleguide.md): one compact page
+exercising every styled element — headings, lists, blockquote, inline code, plain
+and captioned (`figure.codeblock`) code fences, links and a deliberately long URL
+that guards the mobile-overflow fix. It is served at `/test/styleguide/` only
+under the test config ([`_config-test.yml`](_config-test.yml), which the Playwright
+`webServer` layers on top of `_config.yml` to expose `_fixtures/` as a collection).
+The production build reads only `_config.yml`, so the fixture never ships to the
+live site and never appears in `/writing/` or the sitemap. To add coverage for a
+new component, add it to the fixture and re-run `:update`.
+
+**Screenshots** — dumps clean, full-page PNGs to `screenshots/<viewport>/<page>.png`
+for eyeballing a redesign (this directory is gitignored):
+
+```sh
+mise exec node@22 -- npm run screenshots
+```
+
 ## Writing a post
 
 ```sh
@@ -67,15 +125,19 @@ description: One-sentence summary.    # the "dek" under the title; also <meta>
 ---
 ```
 
-**Captioned code blocks** — label a fenced block with a `code-title` paragraph
-immediately above it; it renders as the design's caption strip joined to the
-code. Syntax highlighting is automatic (Rouge, dark theme):
+**Captioned code blocks** — wrap a fenced block in a `figure.codeblock` with a
+`<figcaption>` (typically a filename or context label); it renders as the
+design's caption strip joined to the code. The `markdown="1"` attribute lets
+kramdown process the fence inside the HTML block. Syntax highlighting is
+automatic (Rouge, dark theme):
 
 ````markdown
-<p class="code-title">/etc/nginx/nginx.conf</p>
+<figure class="codeblock" markdown="1">
+<figcaption>/etc/nginx/nginx.conf</figcaption>
 ```nginx
 server { listen 80; }
 ```
+</figure>
 ````
 
 ## Generating the résumé PDF
