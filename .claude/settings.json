@@ -5,7 +5,8 @@
       "Bash(bundle install *)",
       "Bash(jekyll build *)",
       "Bash(mise ls *)",
-      "Bash(mise list *)"
+      "Bash(mise list *)",
+      "Bash(mise exec *)"
     ]
   }
 }
