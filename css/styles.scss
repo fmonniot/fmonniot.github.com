@@ -226,7 +226,7 @@ h1.title {
 .toc .toc-h { font-family: var(--serif); font-style: italic; font-size: 14px; color: var(--faint); margin-bottom: 10px; }
 .toc ol { margin: 0; padding: 0; list-style: none; counter-reset: toc; }
 .toc ol li { font-size: 15px; line-height: 1.5; margin-top: 7px; padding-left: 34px; position: relative; color: var(--ink); }
-.toc ol li::before { counter-increment: toc; content: counter(toc); position: absolute; left: 0; top: 2px; font-family: var(--mono); font-size: 11.5px; color: var(--accent-ink); }
+.toc ol li::before { counter-increment: toc; content: counter(toc, decimal-leading-zero); position: absolute; left: 0; top: 2px; font-family: var(--mono); font-size: 11.5px; color: var(--accent-ink); }
 .toc ol ol { counter-reset: toc; margin-top: 4px; }
 .toc a { color: var(--accent-ink); border-bottom: 1px solid transparent; transition: border-color .15s ease; }
 .toc a:hover { border-color: var(--accent-ink); }
@@ -316,11 +316,16 @@ h1.title {
 
 /* ─── Captioned code blocks ───────────────────────────────────────────────
    Kramdown/Rouge wraps fenced blocks as
-   `div.highlighter-rouge > div.highlight > pre.highlight > code`. */
+   `div.highlighter-rouge > div.highlight > pre.highlight > code`.
+   Inside .codeblock, collapse those wrapper divs with display:contents so
+   the <pre> renders as a direct child of <figure> — matching the reference
+   design — while Rouge's span-based syntax highlighting still works (CSS
+   selectors are DOM-based, not rendering-tree-based). */
 .prose .highlighter-rouge { margin: 26px 0 0; }
 .prose .highlight { background: transparent; }
 .prose .highlight pre, .prose pre.highlight { margin: 0; }
-.prose .codeblock .highlighter-rouge { margin-top: 0; }
+.prose .codeblock .highlighter-rouge,
+.prose .codeblock .highlight { display: contents; }
 
 /* ─── Syntax highlighting (Rouge) — dark, tuned to the code surface ──────── */
 .highlight .c, .highlight .cm, .highlight .c1, .highlight .cs, .highlight .cd { color: #6b7787; font-style: italic; }
