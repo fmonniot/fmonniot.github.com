@@ -1,0 +1,12 @@
+# Test-only config overlay, layered on top of _config.yml by the Playwright
+# webServer (jekyll serve --config _config.yml,_config-test.yml).
+#
+# It exposes _fixtures/ as built pages used purely for visual regression. The
+# production build (`jekyll build`, which reads only _config.yml) does not define
+# this collection, so _fixtures/ is an ordinary underscore directory that Jekyll
+# ignores — fixtures never ship to the live site, and they never appear in
+# /writing/ or the sitemap because they are a separate collection, not posts.
+collections:
+  fixtures:
+    output: true
+    permalink: /test/:name/

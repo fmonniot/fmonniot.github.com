@@ -52,8 +52,11 @@ mise exec ruby@3.3 -- bundle exec jekyll build   # output goes to _site/ (gitign
 [Playwright](https://playwright.dev/) drives a headless Chromium over a matrix of
 four viewports — `desktop` (1920×1080), `laptop` (1440×900), `tablet` (768×1024)
 and `phone` (390×844) — defined in [`playwright.config.ts`](playwright.config.ts).
-The routes under test live in [`tests/routes.ts`](tests/routes.ts). Each run
-starts Jekyll automatically (and reuses a server you already have running).
+The routes under test live in [`tests/routes.ts`](tests/routes.ts): the home,
+writing and résumé pages, plus a **styleguide fixture** (see below) that stands
+in for a full article. Each run starts Jekyll automatically (and reuses a server
+already listening on `:4000` — so kill any stale `jekyll serve` first, or it will
+be tested instead of a fresh build).
 
 One-time setup (Node is pinned in [`mise.toml`](mise.toml)):
 
@@ -76,6 +79,18 @@ mise exec node@22 -- npm run report               # open the HTML diff report
 Baselines live in [`tests/visual.spec.ts-snapshots/`](tests/visual.spec.ts-snapshots/)
 and are committed. They are platform-specific (filenames end in `-darwin`); run
 `:update` once on each platform that runs the suite.
+
+**The styleguide fixture** — rather than baseline a full 25k-px article (which
+made the committed PNGs balloon and churn on every redesign), article styling is
+covered by [`_fixtures/styleguide.md`](_fixtures/styleguide.md): one compact page
+exercising every styled element — headings, lists, blockquote, inline code, plain
+and captioned (`figure.codeblock`) code fences, links and a deliberately long URL
+that guards the mobile-overflow fix. It is served at `/test/styleguide/` only
+under the test config ([`_config-test.yml`](_config-test.yml), which the Playwright
+`webServer` layers on top of `_config.yml` to expose `_fixtures/` as a collection).
+The production build reads only `_config.yml`, so the fixture never ships to the
+live site and never appears in `/writing/` or the sitemap. To add coverage for a
+new component, add it to the fixture and re-run `:update`.
 
 **Screenshots** — dumps clean, full-page PNGs to `screenshots/<viewport>/<page>.png`
 for eyeballing a redesign (this directory is gitignored):

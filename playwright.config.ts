@@ -38,7 +38,8 @@ export default defineConfig({
 
   // Jekyll is started automatically; an already-running server is reused locally.
   webServer: {
-    command: 'mise exec ruby@3.3 -- bundle exec jekyll serve --port 4000 --no-watch',
+    command:
+      'mise exec ruby@3.3 -- bundle exec jekyll serve --port 4000 --no-watch --config _config.yml,_config-test.yml',
     url: 'http://127.0.0.1:4000',
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
