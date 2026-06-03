@@ -17,6 +17,19 @@ description: Résumé of François Monniot, software engineer — Samsung SmartT
     </a>
   </div>
 
+  <div class="p-head print-only">
+    <div class="p-id">
+      <div class="p-name">{{ site.profile.name }}</div>
+      <div class="p-role">{{ site.profile.role }} · {{ site.profile.location }}</div>
+    </div>
+    <div class="p-contact">
+      <div class="row"><span class="k">Email</span><a href="mailto:{{ site.data.resume.contact.email }}">{{ site.data.resume.contact.email }}</a></div>
+      <div class="row"><span class="k">Mobile</span><span>{{ site.data.resume.contact.mobile }}</span></div>
+      <div class="row"><span class="k">Web</span><a href="{{ site.data.resume.contact.web_url }}">{{ site.data.resume.contact.web }}</a></div>
+      <div class="row"><span class="k">GitHub</span><a href="{{ site.data.resume.contact.github_url }}">{{ site.data.resume.contact.github }}</a></div>
+    </div>
+  </div>
+
   <div class="section-h">Experience <span class="ct">{{ site.data.resume.experience.span }}</span></div>
   {% for job in site.data.resume.experience.jobs %}
   <div class="job">
