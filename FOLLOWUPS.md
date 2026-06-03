@@ -11,17 +11,13 @@ roughly ordered by importance within each.
   renderer — e.g. headless Chrome (`chrome --headless --print-to-pdf`),
   Playwright, or [`weasyprint`](https://weasyprint.org/). Bonus: those honour
   modern CSS and web fonts, so the PDF will match `resume-print.html` exactly.
-- **Decide what to do with `Gemfile.lock`.** It was regenerated under Ruby 3.3 /
-  Bundler 2.5 (the old lock pinned Bundler 1.17.3 + ffi 1.11.3, which can't run
-  on modern Ruby). Confirm this is the intended baseline and commit it, or pin a
-  specific Jekyll version if you want reproducible upgrades.
 - **Confirm the deploy pipeline still works** with Jekyll 4.4.1 and the
   `plugins:` config (the README assumes GitHub Pages). If you rely on GitHub's
   classic Pages build, verify it tolerates these versions, or move to a GitHub
   Actions build.
-- **Add a `.tool-version` / `mise.toml`?** Currently mise is invoked explicitly.
-  A committed `mise.toml` pinning `ruby 3.3` would make `bundle …` work without
-  the `mise exec` prefix and document the version for contributors.
+- ~~**Add a `.tool-version` / `mise.toml`.**~~ Done: `mise.toml` committed,
+  pinning `ruby = "3.3"` (resolves to 3.3.11). `bundle exec jekyll` now works
+  without the `mise exec` prefix once the file is trusted (`mise trust`).
 
 ## Content (placeholder copy adopted from the design)
 
