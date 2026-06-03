@@ -322,10 +322,15 @@ h1.title {
    design — while Rouge's span-based syntax highlighting still works (CSS
    selectors are DOM-based, not rendering-tree-based). */
 .prose .highlighter-rouge { margin: 26px 0 0; }
-.prose .highlight { background: transparent; }
+/* The `highlight` class is on BOTH the wrapper div and the pre, so every
+   wrapper rule below targets `div.highlight` explicitly — an unscoped
+   `.highlight` would also hit pre.highlight and strip its background
+   (it out-specifies `.prose pre`) or, worse, collapse the pre's box via
+   display:contents, removing the code surface entirely. */
+.prose div.highlight { background: transparent; }
 .prose .highlight pre, .prose pre.highlight { margin: 0; }
 .prose .codeblock .highlighter-rouge,
-.prose .codeblock .highlight { display: contents; }
+.prose .codeblock div.highlight { display: contents; }
 
 /* ─── Syntax highlighting (Rouge) — dark, tuned to the code surface ──────── */
 .highlight .c, .highlight .cm, .highlight .c1, .highlight .cs, .highlight .cd { color: #6b7787; font-style: italic; }
