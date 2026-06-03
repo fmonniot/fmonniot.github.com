@@ -58,10 +58,10 @@ in for a full article. Each run starts its own Jekyll on a random free port (so
 it never collides with a `jekyll serve` you already have on `:4000`) and shuts it
 down afterwards.
 
-One-time setup (Node is pinned in [`mise.toml`](mise.toml)):
+One-time setup (Node and oxipng are pinned in [`mise.toml`](mise.toml)):
 
 ```sh
-mise install node@22
+mise install                                       # node + oxipng (baseline optimiser)
 mise exec node@22 -- npm install
 mise exec node@22 -- npx playwright install chromium
 ```
@@ -78,7 +78,13 @@ mise exec node@22 -- npm run report               # open the HTML diff report
 
 Baselines live in [`tests/visual.spec.ts-snapshots/`](tests/visual.spec.ts-snapshots/)
 and are committed. They are platform-specific (filenames end in `-darwin`); run
-`:update` once on each platform that runs the suite.
+`:update` once on each platform that runs the suite. `:update` automatically runs
+[`scripts/optimize-baselines.mjs`](scripts/optimize-baselines.mjs) afterwards,
+which losslessly re-compresses the PNGs with oxipng (~20% smaller) to keep the
+committed artifacts — and their churn in git history — small. It is lossless and
+idempotent: the decoded pixels are unchanged, so optimised baselines still match
+a fresh render exactly. Run it standalone with `npm run optimize:baselines`; if
+oxipng is missing it warns and skips rather than failing.
 
 **The styleguide fixture** — rather than baseline a full 25k-px article (which
 made the committed PNGs balloon and churn on every redesign), article styling is

@@ -1,3 +1,4 @@
 [tools]
 ruby = "3.3"
 node = "22"
+oxipng = "10" # lossless PNG optimisation of committed visual baselines
