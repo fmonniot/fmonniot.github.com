@@ -76,6 +76,13 @@ Tables can appear in posts, so the baseline records their current rendering:
 | Reverse proxy | 443 | TLS termination |
 | App server | 8080 | Behind the proxy |
 
+## A large image
+
+An image wider than the content column must scale down to fit rather than
+overflow the page — the same failure mode as the long URL above, but for media:
+
+![A wide landscape photograph, larger than the content column](/images/reunion.jpg)
+
 ## Closing heading
 
 A final `h2` plus this paragraph mark the end of the fixture, so vertical
