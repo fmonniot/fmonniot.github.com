@@ -33,10 +33,10 @@ mise exec ruby@3.3 -- bundle install
 
 ## Local development
 
-Serve with live reload (some dev-only nav links appear via `_config-dev.yml`):
+Serve with live reload (source maps are generated in this mode):
 
 ```sh
-mise exec ruby@3.3 -- bundle exec jekyll serve --config=_config.yml,_config-dev.yml
+mise exec ruby@3.3 -- bundle exec jekyll serve
 ```
 
 Then open <http://localhost:4000>.

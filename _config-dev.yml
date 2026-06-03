@@ -1,4 +1,0 @@
-dev: true
-
-# CSS style + sourcemaps both come from _config.yml (sourcemap: development),
-# which generates source maps when JEKYLL_ENV=development (i.e. local serve).
