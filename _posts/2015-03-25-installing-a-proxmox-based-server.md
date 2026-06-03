@@ -6,38 +6,13 @@ kicker: Infrastructure · Proxmox · Self-hosting
 description: Build notes for turning a fresh Proxmox host into a usable home for services — a dedicated VM network, a NAT firewall, reusable containers, self-signed certificates, an nginx reverse proxy, and LDAP behind it all.
 ---
 
-## Table of Contents
+<div class="toc" markdown="1">
+<p class="toc-h">Contents</p>
 
-1. [Prepare your hypervisor](#prepare-your-hypervisor)
-    1. [Proxmox User](#proxmox-user)
-    2. [VM dedicated network](#vm-dedicated-network)
-    3. [Firewall](#firewall)
-2. [Template](#template)
-    1. [Preparation](#preparation)
-    2. [Create the base image](#create-the-base-image)
-3. [Generate SSL Certificate](#generate-ssl-certificate)
-    1. [Root Authority](#root-authority)
-    2. [Create a certificate](#create-a-certificate)
-        1. [Certificate Signing Request (CSR)](#certificate-signing-request-(csr))
-        2. [Sign the key](#sign-the-key)
-    3. [Bonus: Automate the creation](#bonus:-automate-the-creation)
-5. [Reverse Proxy](#reverse-proxy)
-    1. [Hypervisor](#hypervisor)
-    2. [Container](#container)
-        1. [Default web page](#default-web-page)
-        2. [Proxmox GUI](#proxmox-gui)
-6. [Enter the LDAP directory](#enter-the-ldap-directory)
-    1. [OpenLDAP Server](#openldap-server)
-    2. [FusionDirectory](#fusiondirectory)
-        1. [Repositories](#repositories)
-        2. [Schema installation](#schema-installation)
-        3. [Fusiondirectory installation](#fusiondirectory-installation)
-    3. [Add LDAP admin to proxmox](#add-ldap-admin-to-proxmox)
-7.  [Git](#git)
-    1. [Nginx Configurations](#nginx-configurations)
-    2. [LDAP Integration](#ldap-integration)
-    3. [Host firewall](#host-firewall)
-8.  [DNS](#dns)
+1. TOC
+{:toc}
+
+</div>
 
 
 ## Prepare your hypervisor
