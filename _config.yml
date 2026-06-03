@@ -1,4 +1,4 @@
-gems:
+plugins:
   - jekyll-sitemap
   - jekyll-mentions
   - jekyll-paginate
@@ -12,12 +12,26 @@ include:
   - .well-known
 
 markdown: kramdown
+lang: en
 
 future: true
 permalink: pretty
 paginate: 150 # Only to have access to paginator.total_posts
 
 jekyll-mentions: https://twitter.com
+
+# Sidebar / chrome content (drives _layouts/default.html "Spine" sidebar)
+profile:
+  name:     François Monniot
+  role:     Software Engineer
+  status:   Open to interesting problems
+  bio:      Senior software engineer building reliable, distributed cloud systems — messaging, gateways, and the plumbing underneath.
+  location: San Francisco, CA
+  github:   https://github.com/fmonniot
+  github_handle: "@fmonniot"
+  # Email split so it can be assembled client-side (anti-scraping)
+  email_user:   francois
+  email_domain: monniot.eu
 
 author:
     name:     François Monniot
@@ -27,10 +41,10 @@ author:
     linkedin: https://linkedin.com/in/fmonniot
 
 name: François Monniot
-url:  http://francois.monniot.eu/
+url:  https://francois.monniot.eu
 
 sass:
-  style: :compressed
+  style: compressed
 
 defaults:
   -
@@ -44,4 +58,4 @@ defaults:
       path: ""
       type: "pages"
     values:
-      layout: "wrapped"
+      layout: "default"

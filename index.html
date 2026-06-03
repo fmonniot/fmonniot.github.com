@@ -1,22 +1,25 @@
 ---
-title: Home
+nav: /
+title: François Monniot — Software Engineer
+description: Software engineer building reliable, distributed cloud systems. Currently on the MQTT team at Samsung SmartThings.
 ---
+<div class="inner">
+  <div class="kicker">Software Engineer · San Francisco</div>
+  <h1 class="title">Building the quiet infrastructure behind connected products.</h1>
+  <p class="lede">I build the unglamorous infrastructure that keeps connected products talking — messaging layers, API gateways, and the distributed plumbing underneath. Currently on the MQTT team at <a href="https://smartthings.developer.samsung.com/">Samsung SmartThings</a>.</p>
 
-{% if paginator.total_posts > 0 %}
-<section id="publications">
-    <h1>Publications</h1>
-    <ul>
-    {% for post in site.posts %}
-        <li><a href="{{ post.url }}">{{ post.title }} <small>({{ post.date | date: "%-d %B %Y" }})</small></a></li>
+  <div class="section-h">Latest writing <span class="ct">{{ site.posts | size }} entries</span></div>
+  <div class="list">
+    {% for post in site.posts limit: 3 %}
+    <a class="row-link" href="{{ post.url }}">
+      <div><div class="t">{{ post.title }}</div>{% if post.kicker %}<div class="tag">{{ post.kicker }}</div>{% endif %}</div>
+      <div class="yr">{{ post.date | date: "%-d %b %Y" }} <span class="arr">→</span></div>
+    </a>
     {% endfor %}
-    </ul>
- </section>
-{% endif %}
+  </div>
 
-<section>
-    <h1>Contact</h1>
-    <p>
-      You can found me on <a href="{{ site.author.github }}">GitHub</a> or <a href="{{ site.author.linkedin }}">LinkedIn</a>.
-      Or you can contact me on <a href="{{ site.author.twitter }}">Twitter</a> or by <a href="mailto:{{ site.author.email }}">mail</a>.
-    </p>
-  </section>
+  <div class="section-h">Now</div>
+  <p class="lede" style="font-size:18px;">Working in the MQTT team at Samsung SmartThings, focused on reliable messaging for connected devices at scale. Before this: ARTIK Cloud's API gateway and data pipeline, and a handful of internships across Paris and California.</p>
+
+  <div class="page-foot">Reach me at <a class="email-obf" href="#" data-user="{{ site.profile.email_user }}" data-domain="{{ site.profile.email_domain }}">{{ site.profile.email_user }} ·at· {{ site.profile.email_domain }}</a> · or on <a href="{{ site.profile.github }}">GitHub</a>.</div>
+</div>

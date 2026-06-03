@@ -8,4 +8,3 @@ gem 'jekyll-paginate'
 # Rakefile
 gem 'rake'
 gem 'chronic'
-gem 'pdfkit'

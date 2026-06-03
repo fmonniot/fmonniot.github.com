@@ -2,54 +2,32 @@
 layout: post
 title: Installing a Proxmox-based server
 date: 2015-03-25 10:44:00 +0100
+kicker: Infrastructure · Proxmox · Self-hosting
+description: Build notes for turning a fresh Proxmox host into a usable home for services — a dedicated VM network, a NAT firewall, reusable containers, self-signed certificates, an nginx reverse proxy, and LDAP behind it all.
 ---
 
-# Table of Contents
+<div class="toc" markdown="1">
+<p class="toc-h">Contents</p>
 
-1. [Prepare your hypervisor](#prepare-your-hypervisor)
-    1. [Proxmox User](#proxmox-user)
-    2. [VM dedicated network](#vm-dedicated-network)
-    3. [Firewall](#firewall)
-2. [Template](#template)
-    1. [Preparation](#preparation)
-    2. [Create the base image](#create-the-base-image)
-3. [Generate SSL Certificate](#generate-ssl-certificate)
-    1. [Root Authority](#root-authority)
-    2. [Create a certificate](#create-a-certificate)
-        1. [Certificate Signing Request (CSR)](#certificate-signing-request-(csr))
-        2. [Sign the key](#sign-the-key)
-    3. [Bonus: Automate the creation](#bonus:-automate-the-creation)
-5. [Reverse Proxy](#reverse-proxy)
-    1. [Hypervisor](#hypervisor)
-    2. [Container](#container)
-        1. [Default web page](#default-web-page)
-        2. [Proxmox GUI](#proxmox-gui)
-6. [Enter the LDAP directory](#enter-the-ldap-directory)
-    1. [OpenLDAP Server](#openldap-server)
-    2. [FusionDirectory](#fusiondirectory)
-        1. [Repositories](#repositories)
-        2. [Schema installation](#schema-installation)
-        3. [Fusiondirectory installation](#fusiondirectory-installation)
-    3. [Add LDAP admin to proxmox](#add-ldap-admin-to-proxmox)
-7.  [Git](#git)
-    1. [Nginx Configurations](#nginx-configurations)
-    2. [LDAP Integration](#ldap-integration)
-    3. [Host firewall](#host-firewall)
-8.  [DNS](#dns)
+1. TOC
+{:toc}
+
+</div>
 
 
-# Prepare your hypervisor
+## Prepare your hypervisor
 
 In this article, which serve as a reminder for when I'll have to reinstall a proxmox based server, I'll describe how to configure a basic installation of a [proxmox](https://www.proxmox.com) based server (mine is hosting by [Online.net](https://www.online.net)).
 As Online provide a server with proxmox already installed, this article doesn't describe how to install proxmox (you can find some instruction on [their wiki](https://pve.proxmox.com/wiki/Installation)) and start with a fresh proxmox installation.
 
 Note: Some sections don't have explanation, if it's bothering you please [open an issue on GitHub](https://github.com/fmonniot/fmonniot.github.com/issues) and I'll try to explain it to you (and update this page accordingly).
 
-## Proxmox user
+### Proxmox user
 
 Give a linux user administrator rights in proxmox
 
-<p class="code-title">PAM-based Proxmox administrator</p>
+<figure class="codeblock" markdown="1">
+<figcaption>PAM-based Proxmox administrator</figcaption>
 ```sh
 #Create a new user (change user by your username)
 pveum useradd user@pam
@@ -63,12 +41,14 @@ pveum aclmod / -group admin -role Administrator
 #You can finally add users to the new 'admin' group:
 pveum usermod user@pam -group admin
 ```
+</figure>
 
-## VM dedicated network
+### VM dedicated network
 
 On your proxmox host, open the `/etc/network/interfaces` file and add at the the end:
 
-<p class="code-title">/etc/network/interfaces</p>
+<figure class="codeblock" markdown="1">
+<figcaption>/etc/network/interfaces</figcaption>
 ```
 # Content by your provider
 
@@ -84,12 +64,14 @@ iface vmbr10 inet static
         bridge_fd 0
         post-up echo 1 > /proc/sys/net/ipv4/ip_forward
 ```
+</figure>
 
-## Firewall
+### Firewall
 
 To manage the firewall of our server, I have created a simple script that can be placed as an init service (soon to be replaced by a systemd unit). This script create a NAT that limit the packet emited by your VM on the external network and it let you define some rules for your services (if you have only one public IP, if not this script is of little interest for you).
 
-<p class="code-title">/etc/init.d/firewall</p>
+<figure class="codeblock" markdown="1">
+<figcaption>/etc/init.d/firewall</figcaption>
 ```sh
 ##!/bin/sh
 
@@ -146,22 +128,26 @@ stop) echo "Stopping Firewall"
 esac
 exit 0
 ```
+</figure>
 
 When installing this script as a service don't forget to make it executable and to register it as a startup service:
 
-<p class="code-title">firewall service on startup</p>
+<figure class="codeblock" markdown="1">
+<figcaption>firewall service on startup</figcaption>
 ```sh
 chmod +x /etc/init.d/firewall
 update-rc.d firewall defaults
 ```
+</figure>
 
-# Template
+## Template
 
 Before anything, download the Debian template: in the local disk section, tab content, click on Templates and select the Debian 7 base image.
 
 Then create a container with that image and the following information:
 
-<p class="code-title">Template container configuration</p>
+<figure class="codeblock" markdown="1">
+<figcaption>Template container configuration</figcaption>
 ```
 General:   choose whatever you want, just remember it ;)
 Template:  the debian that you just download
@@ -169,20 +155,24 @@ Resources: the default values are enough for a template
 Network:   choose the bridged mode with the newly created vmbr10
 DNS:       use host settings for now
 ```
+</figure>
 
 Once the container is ready start it and log into:
 
-<p class="code-title">Start and enter container 100</p>
+<figure class="codeblock" markdown="1">
+<figcaption>Start and enter container 100</figcaption>
 ```sh
 vzctl start 100
 vzctl enter 100
 ```
+</figure>
 
-## Preparation
+### Preparation
 
 Edit the network configuration to let your CT access the internet.
 
-<p class="code-title">/etc/network/interfaces</p>
+<figure class="codeblock" markdown="1">
+<figcaption>/etc/network/interfaces</figcaption>
 ```
 auto eth0
 iface eth0 inet static
@@ -190,38 +180,46 @@ iface eth0 inet static
     netmask 255.255.255.0
     gateway 192.168.10.1
 ```
+</figure>
 
 Install common packages (edit this list if you want more or less packages)
 
-<p class="code-title">Install common packages</p>
+<figure class="codeblock" markdown="1">
+<figcaption>Install common packages</figcaption>
 ```sh
 apt-get update; apt-get upgrade -y
 apt-get install -y htop iotop tree zsh ca-certificates sudo
 ```
+</figure>
 
 Add default user and make it a sudoer
 
-<p class="code-title">Default sudoer user</p>
+<figure class="codeblock" markdown="1">
+<figcaption>Default sudoer user</figcaption>
 ```sh
 adduser username
 usermod -aG sudo username
 ```
+</figure>
 
 This step is optionnal, if you don't want to use puppet (which will be configured later) you can safely skip it.
 
-<p class="code-title">Prepare puppet agent</p>
+<figure class="codeblock" markdown="1">
+<figcaption>Prepare puppet agent</figcaption>
 ```sh
 wget https://apt.puppetlabs.com/puppetlabs-release-wheezy.deb
 dpkg -i puppetlabs-release-wheezy.deb
 apt-get update && apt-get install puppet
 ```
+</figure>
 
-## Create the base image
+### Create the base image
 
 Now that we have a container containing all of our base tools, we need to create the base image for our next container.
 To do that, we will begin by stopping the container and removing the network attached (eth0). Then we will create a tar archive of the container file system and place that archive at the right place and we will be done.
 
-<p class="code-title">Create an openVZ template</p>
+<figure class="codeblock" markdown="1">
+<figcaption>Create an openVZ template</figcaption>
 ```sh
 # These commands need to be run as root on the hypervisor
 vzctl stop 100
@@ -229,16 +227,18 @@ vzctl set 100 --save --netif_del eth0
 cd /var/lib/vz/private/100
 tar -cvzpf /var/lib/vz/template/cache/debian-7.0-improved_amd64.tar.gz .
 ```
+</figure>
 
 That's it, you have a new template !
 
-# Generate SSL Certificate
+## Generate SSL Certificate
 
 A great article on how to create your own SSl certificates is available online at https://help.ubuntu.com/14.04/serverguide/certificates-and-security.html. Consequently this article will only list all commands to run to have a self-signed certificate and WILL NOT explain some concept or tradeoff made.
 
-## Root authority
+### Root authority
 
-<p class="code-title">Prepare root authority</p>
+<figure class="codeblock" markdown="1">
+<figcaption>Prepare root authority</figcaption>
 ```sh
 # Make directories where certificates will be stored
 mkdir /etc/ssl/CA
@@ -248,10 +248,12 @@ mkdir /etc/ssl/newcerts
 echo '01' > /etc/ssl/CA/serial
 touch /etc/ssl/CA/index.txt
 ```
+</figure>
 
 Edit the file `/etc/ssl/openssl.cnf` and in the `[ CA_default ]` section add/or modify
 
-<p class="code-title">/etc/ssl/openssl.cnf</p>
+<figure class="codeblock" markdown="1">
+<figcaption>/etc/ssl/openssl.cnf</figcaption>
 ```ini
 dir             = /etc/ssl               # Where everything is kept
 database        = $dir/CA/index.txt      # database index file.
@@ -259,8 +261,10 @@ certificate     = $dir/certs/cacert.pem  # The CA certificate
 serial          = $dir/CA/serial         # The current serial number
 private_key     = $dir/private/cakey.pem # The private key
 ```
+</figure>
 
-<p class="code-title">Create the root certificate</p>
+<figure class="codeblock" markdown="1">
+<figcaption>Create the root certificate</figcaption>
 ```sh
 # Next we create the self-signed certificate:
 openssl req -new -x509 -sha256 -extensions v3_ca -keyout cakey.pem -out cacert.pem -days 730
@@ -269,18 +273,20 @@ openssl req -new -x509 -sha256 -extensions v3_ca -keyout cakey.pem -out cacert.p
 mv cakey.pem /etc/ssl/private/
 mv cacert.pem /etc/ssl/certs/
 ```
+</figure>
 
 You can now sign your own certificates.
 
-## Create a certificate
+### Create a certificate
 
 This procedure must be done for each new certificate you want to have.
 
 The first time you can edit the `openssl.cnf` file and edit the default value that will be asked when creating a CSR. That can done in the section `[ req_distinguished_name ]`.
 
-### Certificate Signing Request (CSR)
+#### Certificate Signing Request (CSR)
 
-<p class="code-title">Generate a CSR</p>
+<figure class="codeblock" markdown="1">
+<figcaption>Generate a CSR</figcaption>
 ```sh
 # You should enter a passphrase (at least 4 characters), you can create
 # a key without a passphrase later if your service need one.
@@ -294,10 +300,12 @@ mv server.key.insecure server.key
 # Generate the CSR
 openssl req -new -key server.key -out server.csr
 ```
+</figure>
 
-### Sign the key
+#### Sign the key
 
-<p class="code-title">Sign the CSR by our CA</p>
+<figure class="codeblock" markdown="1">
+<figcaption>Sign the CSR by our CA</figcaption>
 ```sh
 # The pass asked is the CA one
 openssl ca -in server.csr -config /etc/ssl/openssl.cnf
@@ -307,14 +315,16 @@ export NAME=tmp NUM=01
 nawk 'v{v=v"\n"$0}!/^#/ && /----BEGIN/ {v=$0}/----END/&&v{  print v > "'$NAME'.crt"  close("'$NAME'.crt")}' /etc/ssl/newcerts/$NUM.pem
 mv $NAME.crt-1 $NAME.crt
 ```
+</figure>
 
 Congratulation, you have a self-signed SSL certificate that you can deploy wherever you want !
 
-## Bonus: Automate the creation
+### Bonus: Automate the creation
 
 And because it can be a bit tedious, I have made a simple script that do all these operation in one line: `sh create_insecure.sh $CRTNAME`
 
-<p class="code-title">create_insecure.sh</p>
+<figure class="codeblock" markdown="1">
+<figcaption>create_insecure.sh</figcaption>
 ```sh
 SSLDIR=/etc/ssl/
 if [ -z "$1" ]; then
@@ -349,54 +359,64 @@ echo Extract crt from $LASTNEWCERTS
 nawk 'v{v=v"\n"$0}!/^#/ && /----BEGIN/ {v=$0}/----END/&&v{  print v > "'$KEYNAME'.crt"  close("'$KEYNAME'.crt")}' $SSLDIR"newcerts/"$LASTNEWCERTS
 mv $KEYNAME.crt-1 $KEYNAME.crt
 ```
+</figure>
 
-# Reverse Proxy
+## Reverse Proxy
 
 Our reverse proxy is in a container based on the custom debian 7 template in bridged mode (vmbr10).
 This container is configured to have a static ip of 192.168.10.10 (on eth0).
 
-## Hypervisor
+### Hypervisor
 
 As we have only one IP address for our server, we need to NAT our VMs/CTs. To do that you can use the following IPTables rules (if you have used the script of the section [Firewall](#firewall) you already have them).
 
-<p class="code-title">Setting iptables rules</p>
+<figure class="codeblock" markdown="1">
+<figcaption>Setting iptables rules</figcaption>
 ```sh
 # Already active from /etc/init.d/firewall
 iptables -t nat -A PREROUTING -i vmbr0 -p tcp --dport 80  -j DNAT --to 192.168.10.10:80  -m comment --comment "revproxy tcp/80"
 iptables -t nat -A PREROUTING -i vmbr0 -p tcp --dport 443 -j DNAT --to 192.168.10.10:443 -m comment --comment "revproxy tcp/443"
 ```
+</figure>
 
 Also, we will configure nginx to use https so you need to generate a certificate `revproxy.crt` and `revproxy.key` without passphrase ([here's how](#create-a-certificate)) and copy them into the newly created container. Remember that the FQDN you enter will determine on which URL the certificate will be valide.
 
-<p class="code-title">Copy certificate on revproxy</p>
+<figure class="codeblock" markdown="1">
+<figcaption>Copy certificate on revproxy</figcaption>
 ```sh
 scp revproxy.crt 192.168.10.10:/etc/ssl/revproxy.crt
 scp revproxy.key 192.168.10.10:/etc/ssl/revproxy.key
 ```
+</figure>
 
-## Container
+### Container
 /usr/share/doc/nginx-doc/examples/
 
-<p class="code-title">Install nginx</p>
+<figure class="codeblock" markdown="1">
+<figcaption>Install nginx</figcaption>
 ```sh
 apt-get install nginx
 ```
+</figure>
 
 We force all website to use HTTPS.
 
-<p class="code-title">/etc/nginx/conf.d/force_https.conf</p>
+<figure class="codeblock" markdown="1">
+<figcaption>/etc/nginx/conf.d/force_https.conf</figcaption>
 ```nginx
 server {
     listen 80 default_server;
     rewrite ^(.*) https://$host$1 permanent;
 }
 ```
+</figure>
 
-### Default web page
+#### Default web page
 
 Before anything, an edit of the default page to use HTTPS instead of plain HTTP. We will also use our own index rather than the one provided by nginx.
 
-<p class="code-title">/etc/nginx/sites-available/default</p>
+<figure class="codeblock" markdown="1">
+<figcaption>/etc/nginx/sites-available/default</figcaption>
 ```nginx
 server {
     listen 443;
@@ -420,19 +440,23 @@ server {
     }
 }
 ```
+</figure>
 
-<p class="code-title">Copy index and reload nginx</p>
+<figure class="codeblock" markdown="1">
+<figcaption>Copy index and reload nginx</figcaption>
 ```sh
 mkdir /var/www
 cp /usr/share/nginx/www/index.html /var/www/index.html
 service nginx reload
 ```
+</figure>
 
-### Proxmox GUI
+#### Proxmox GUI
 
 At the same time we can also redirect the Proxmox GUI via our proxy to have a beautiful URL (here proxmox.ashelia.me). Remember to generate a new certificate with the correct URL for this to work and store them as `/etc/ssl/proxmox.(crt|key)`
 
-<p class="code-title">/etc/nginx/sites-available/proxmox-gui</p>
+<figure class="codeblock" markdown="1">
+<figcaption>/etc/nginx/sites-available/proxmox-gui</figcaption>
 ```nginx
 upstream proxmox {
     server 192.168.10.1:8006;
@@ -465,16 +489,19 @@ server {
     }
 }
 ```
+</figure>
 
-<p class="code-title">Enable the proxmox integration</p>
+<figure class="codeblock" markdown="1">
+<figcaption>Enable the proxmox integration</figcaption>
 ```sh
 ln -s /etc/nginx/sites-available/proxmox-gui /etc/nginx/sites-enabled/
 service nginx reload
 ```
+</figure>
 
 And that's it ! You know how to configure nginx to serve as a proxy.
 
-# Enter the LDAP directory
+## Enter the LDAP directory
 
 *Adapted from http://documentation.fusiondirectory.org/en/documentation/admin_installation.*
 
@@ -483,13 +510,14 @@ This container is configured to have a static ip of 192.168.10.15 (on eth0).
 
 All the work will be inside the container except for the reverse proxy that need to be configured to proxy the web interface, this part is supposed already done and can be easily be deduce from the [proxmox configuration](#proxmox-gui) as it's the same configuration (minus the upstream location and the `location` part where you need to insert `rewrite ^(.*)$  /fusiondirectory/$1 break;` before the `prox_pass` instruction).
 
-## OpenLDAP server
+### OpenLDAP server
 
-### Structure
+#### Structure
 
 The LDAP structure can be representing by the following figure:
 
-<p class="code-title">LDAP structure</p>
+<figure class="codeblock" markdown="1">
+<figcaption>LDAP structure</figcaption>
 ```
 dc=monniot,dc=eu
   │
@@ -504,20 +532,23 @@ dc=monniot,dc=eu
        │— cn=francois
        │— cn=admin
 ```
+</figure>
 
 Each entity have a different meaning:
 - `groups` contains all groups of our LDAP.
 - `config` contains configurations of services.
 - `people` contains the user of the system.
 
-### Installation
+#### Installation
 
-<p class="code-title">LDAP installation and configuration</p>
+<figure class="codeblock" markdown="1">
+<figcaption>LDAP installation and configuration</figcaption>
 ```sh
 # You will be asked a LDAP password
 apt-get install slapd ldap-utils
 dpkg-reconfigure slapd
 ```
+</figure>
 
 OpenLDAP reconfiguration (more specific options) will ask some questions:
 
@@ -532,20 +563,23 @@ OpenLDAP reconfiguration (more specific options) will ask some questions:
 
 You can know check the LDAP server status, it should be running.
 
-<p class="code-title">Check LDAP status</p>
+<figure class="codeblock" markdown="1">
+<figcaption>Check LDAP status</figcaption>
 ```sh
 /etc/init.d/slapd status
 ```
+</figure>
 
-## FusionDirectory
+### FusionDirectory
 
 And because managing a LDAP server manually (i.e. without GUI) is a bit tedious, we will install [fusiondirectory](https://www.fusiondirectory.org/) which is a web interface that provide many basic operation (e.g. managing user and mail) and is extensible via plugin if needed.
 
-### Repositories
+#### Repositories
 
 We install some debian repositories to simplify the install process.
 
-<p class="code-title">/etc/apt/sources.list.d/fusiondirectory.list</p>
+<figure class="codeblock" markdown="1">
+<figcaption>/etc/apt/sources.list.d/fusiondirectory.list</figcaption>
 ```
 # fusiondirectory repository
 deb http://repos.fusiondirectory.org/debian wheezy main
@@ -553,10 +587,12 @@ deb http://repos.fusiondirectory.org/debian wheezy main
 # fusiondirectory debian-extra repository
 deb http://repos.fusiondirectory.org/debian-extra wheezy main
 ```
+</figure>
 
 And we register the GPG key of these repositories
 
-<p class="code-title">Install GPG key</p>
+<figure class="codeblock" markdown="1">
+<figcaption>Install GPG key</figcaption>
 ```sh
 # Import key
 gpg --recv-key E184859262B4981F --keyserver keyserver.ubuntu.com
@@ -568,17 +604,20 @@ apt-get update
 # Check packages
 apt-cache search fusiondirectory | more
 ```
+</figure>
 
-### Schema installation
+#### Schema installation
 
 First, we install some LDAP schema needed by fusiondirectory.
 
-<p class="code-title">Install base LDAP schema</p>
+<figure class="codeblock" markdown="1">
+<figcaption>Install base LDAP schema</figcaption>
 ```sh
 apt-get install fusiondirectory-schema schema2ldif
 # Install schema
 fusiondirectory-insert-schema
 ```
+</figure>
 
 Then we check if the schema are present in the LDAP: `fusiondirectory-insert-schema -l` must output
 
@@ -594,12 +633,14 @@ ldapns
 recovery-fd
 ```
 
-### FusionDirectory installation
+#### FusionDirectory installation
 
-<p class="code-title">Install fusiondirectory</p>
+<figure class="codeblock" markdown="1">
+<figcaption>Install fusiondirectory</figcaption>
 ```sh
 apt-get install fusiondirectory
 ```
+</figure>
 
 Configure through the web interface by following the given instuction.
 
@@ -609,14 +650,16 @@ Some tips that can save you time:
 - if you need to regenerate a password, use the `slappasswd` command and in the file `/etc/ldap/slapd.d/cn=config/olcDatabase={1}hdb.ldif` edit the line `olcRootPW: <result_of_slappasswd>` with the newly created password.
 - Fix javascript error (prototype not found): in `/etc/apache2/conf.d/fusiondirectory.conf` add an alias for javascript, the beginning of the file should be something like:
 
-<p class="code-title">Fix js links</p>
+<figure class="codeblock" markdown="1">
+<figcaption>Fix js links</figcaption>
 ```aconf
 # Include FusionDirectory to your web service
 Alias /fusiondirectory/javascript /usr/share/javascript
 Alias /fusiondirectory /usr/share/fusiondirectory/html
 ```
+</figure>
 
-## Add LDAP admin to proxmox
+### Add LDAP admin to proxmox
 
 
 In the Datacenter category, go to the authentication tab and add a LDAP server with the following configuration:
@@ -633,19 +676,20 @@ Now you can log off and log in with your newly created user.
 
 Voilà, proxmox use your LDAP !
 
-# Git
+## Git
 
 We will use [Gitlab](https://gitlab.com) to manage our git server. [Instruction](https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/install/installation.md) are available on their official website.
 
 When you have installed Gitlab, create a revproxy entry for it ([like the proxmox one](#proxmox-gui)).
 
-## Nginx configurations
+### Nginx configurations
 
 In the gitlab.yml config file set the port to 443, https to true and the host as the one where Gitlab will be accessible (it will be the address that Gitlab will use to display the git URL).
 
 Some modification need to be made to various nginx configs, for the revproxy add some proxy headers in the location section:
 
-<p class="code-title">gitlab revproxy location headers</p>
+<figure class="codeblock" markdown="1">
+<figcaption>gitlab revproxy location headers</figcaption>
 ```nginx
 proxy_set_header    Host                $http_host;
 proxy_set_header    X-Real-IP           $remote_addr;
@@ -654,19 +698,21 @@ proxy_set_header    X-Forwarded-For     $proxy_add_x_forwarded_for;
 proxy_set_header    X-Forwarded-Proto   $scheme;
 proxy_set_header    X-Frame-Options     SAMEORIGIN;
 ```
+</figure>
 
 And on the Gitlab container, add the line ```proxy_set_header    X-Forwarded-Ssl     on;``` to the other proxy headers in the nginx configuration.
 
 **Tips**: once connected as root, don't forget to disable user signup. To do that, go to administration section, settings panel and uncheck signup enabled.
 
-## LDAP Integration
+### LDAP Integration
 
 In `gitlab.yml`, verify that `ldap.enabled` is set to `true` and its parameters (`host`, `port`, `uid` and other `bind_dn`) are correct.
 
 If you have used fusiondirectory, you have to manually add an email address to your LDAP profile. Use `ldapmodify` as described below.
 The first line is the command typed in your shell (in the ldap container), you'll be then asked the password of your admin user (the one used in the LDAP debian installer). And after you have to type the four lines and validate with two carriage return (double press enter). All of these commands will not given you any indication and that's perfectly normal.
 
-<p class="code-title">ldap add mail attribute</p>
+<figure class="codeblock" markdown="1">
+<figcaption>ldap add mail attribute</figcaption>
 ```sh
 ldapmodify -H ldap://localhost -D cn=admin,<your base DN> -x -W
 
@@ -675,15 +721,18 @@ ldapmodify -H ldap://localhost -D cn=admin,<your base DN> -x -W
   add: mail
   mail: <your user email>
 ```
+</figure>
 
 You can verify if the mail attribute have been created with the command:
 
-<p class="code-title">ldap search mail attribute</p>
+<figure class="codeblock" markdown="1">
+<figcaption>ldap search mail attribute</figcaption>
 ```sh
 ldapsearch -D cn=admin,<your base DN> -W -b "ou=people,<your base DN>" mail
 ```
+</figure>
 
-## Host firewall
+### Host firewall
 
 As we have a proxy between our host and gitlab instance, we also need to NAT a port from the host (here 2222) to the 22 port of the gitlab machine. A simple iptables could be the following:
 
@@ -693,7 +742,7 @@ iptables -t nat -I PREROUTING -i vmbr0 -p tcp --dport 2222 -j DNAT --to 192.168.
 
 Don't forget to edit `gitlab.yml` and tell gitlab that the ssh port is 2222 (key `gitlab_shell.port`)
 
-# DNS
+## DNS
 
 In this section I'm not going to describe how to install a DNS system, instead I'll let you read two excellent articles written by Jack Brennan on his blog: _How To: DNS with BIND9 on Debian – [Part 1/2](http://jack-brennan.com/caching-dns-with-bind9-on-debian/) and [Part 2/2](http://jack-brennan.com/dns-with-bind9-on-debian-part-22/)_.
 

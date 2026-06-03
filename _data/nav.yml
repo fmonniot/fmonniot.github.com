@@ -1,0 +1,11 @@
+# Sidebar navigation. `url` is matched against a page's `nav:` front-matter key
+# (or page.url) to set the active (.on) state.
+- no: "01"
+  title: Home
+  url: /
+- no: "02"
+  title: Résumé
+  url: /resume/
+- no: "03"
+  title: Writing
+  url: /writing/

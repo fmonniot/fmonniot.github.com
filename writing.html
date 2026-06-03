@@ -1,0 +1,23 @@
+---
+nav: /writing/
+permalink: /writing/
+title: Writing — François Monniot
+description: Notes on distributed systems, infrastructure, and the languages and tools behind reliable software — by François Monniot.
+---
+<div class="inner">
+  <div class="kicker">Writing</div>
+  <h1 class="title">Notes from the plumbing.</h1>
+  <p class="lede">Occasional write-ups on distributed systems, infrastructure, and the languages and tools I reach for — kept mostly as notes to my future self.</p>
+
+  <div class="section-h">All writing <span class="ct">{{ site.posts | size }} entries</span></div>
+  <div class="list">
+    {% for post in site.posts %}
+    <a class="row-link" href="{{ post.url }}">
+      <div><div class="t">{{ post.title }}</div>{% if post.kicker %}<div class="tag">{{ post.kicker }}</div>{% endif %}</div>
+      <div class="yr">{{ post.date | date: "%-d %b %Y" }} <span class="arr">→</span></div>
+    </a>
+    {% endfor %}
+  </div>
+
+  <div class="page-foot">Reach me at <a class="email-obf" href="#" data-user="{{ site.profile.email_user }}" data-domain="{{ site.profile.email_domain }}">{{ site.profile.email_user }} ·at· {{ site.profile.email_domain }}</a> · or on <a href="{{ site.profile.github }}">GitHub</a>.</div>
+</div>

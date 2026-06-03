@@ -58,28 +58,52 @@ task :resume do
 end
 
 def build_pdf(input_name, output_name)
-  require 'pdfkit'
-  require 'pathname'
+  require 'webrick'
 
-  input = File.open(input_name)
-  page = input.read
-  input.close
+  chrome = find_chrome
+  abort "Chrome not found — install Google Chrome or Chromium" unless chrome
 
-  css_custom_file = '_site/css/' + File.basename(output_name, File.extname(output_name)) + '.css'
+  server_socket = TCPServer.new('127.0.0.1', 0)
+  port = server_socket.addr[1]
+  server_socket.close
 
-  # PDFKit.new takes the page HTML and any options for wkhtmltopdf
-  kit = PDFKit.new(page, 'page-size' => 'A4',
-                      'margin-top' => '0.4in',
-                      'margin-right' => '0.5in',
-                      'margin-bottom' => '0.4in',
-                      'margin-left' => '0.5in',
-                      'print-media-type' => true )
+  server = WEBrick::HTTPServer.new(
+    Port: port,
+    DocumentRoot: '_site',
+    Logger: WEBrick::Log.new(File::NULL),
+    AccessLog: []
+  )
+  thread = Thread.new { server.start }
+  sleep 0.3
 
-  kit.stylesheets << '_site/css/pdf.css'
-  if(File.exist? css_custom_file)
-    kit.stylesheets << css_custom_file
+  url_path = '/' + input_name.sub(%r{\A_site/}, '').sub(/index\.html\z/, '')
+  url = "http://localhost:#{port}#{url_path}"
+  output_abs = File.expand_path(output_name)
+
+  system(chrome,
+    '--headless',
+    '--disable-gpu',
+    "--print-to-pdf=#{output_abs}",
+    '--no-pdf-header-footer',
+    '--virtual-time-budget=5000',
+    url)
+ensure
+  server&.shutdown
+  thread&.join
+end
+
+def find_chrome
+  [
+    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+    '/Applications/Chromium.app/Contents/MacOS/Chromium',
+    'google-chrome',
+    'chromium',
+    'chromium-browser',
+  ].find do |path|
+    if path.start_with?('/')
+      File.executable?(path)
+    else
+      system("which #{path.shellescape} > /dev/null 2>&1")
+    end
   end
-
-  # Save the PDF to a file
-  kit.to_file(output_name)
 end
