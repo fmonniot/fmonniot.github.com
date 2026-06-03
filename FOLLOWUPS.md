@@ -14,8 +14,6 @@ roughly ordered by importance within each.
 
 ## Nice-to-haves (raised during design, not yet built)
 
-- **Self-host the web fonts** (Spectral / IBM Plex Sans / JetBrains Mono) instead
-  of loading from Google Fonts, for privacy and offline/PDF rendering.
 - **Strengthen email obfuscation** if scraping becomes a problem — the current
   scheme exposes `user ·at· domain` as readable text before JS rewrites it.
 - **Add a `favicon.ico`.** `default.html` links `/favicon.ico`, but the file
