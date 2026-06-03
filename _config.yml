@@ -45,6 +45,9 @@ url:  https://francois.monniot.eu
 
 sass:
   style: compressed
+  # Sourcemaps only when JEKYLL_ENV=development (i.e. local serve), never on the
+  # public production build where they'd just be dead weight.
+  sourcemap: development
 
 defaults:
   -
