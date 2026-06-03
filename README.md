@@ -54,9 +54,9 @@ four viewports — `desktop` (1920×1080), `laptop` (1440×900), `tablet` (768×
 and `phone` (390×844) — defined in [`playwright.config.ts`](playwright.config.ts).
 The routes under test live in [`tests/routes.ts`](tests/routes.ts): the home,
 writing and résumé pages, plus a **styleguide fixture** (see below) that stands
-in for a full article. Each run starts Jekyll automatically (and reuses a server
-already listening on `:4000` — so kill any stale `jekyll serve` first, or it will
-be tested instead of a fresh build).
+in for a full article. Each run starts its own Jekyll on a random free port (so
+it never collides with a `jekyll serve` you already have on `:4000`) and shuts it
+down afterwards.
 
 One-time setup (Node is pinned in [`mise.toml`](mise.toml)):
 
