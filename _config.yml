@@ -7,6 +7,14 @@ exclude:
   - Rakefile
   - pids
   - Gemfile*
+  - node_modules
+  - package.json
+  - package-lock.json
+  - playwright.config.ts
+  - tests
+  - screenshots
+  - playwright-report
+  - test-results
 
 include:
   - .well-known

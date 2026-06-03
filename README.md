@@ -47,6 +47,43 @@ Then open <http://localhost:4000>.
 mise exec ruby@3.3 -- bundle exec jekyll build   # output goes to _site/ (gitignored)
 ```
 
+## Visual testing
+
+[Playwright](https://playwright.dev/) drives a headless Chromium over a matrix of
+four viewports — `desktop` (1920×1080), `laptop` (1440×900), `tablet` (768×1024)
+and `phone` (390×844) — defined in [`playwright.config.ts`](playwright.config.ts).
+The routes under test live in [`tests/routes.ts`](tests/routes.ts). Each run
+starts Jekyll automatically (and reuses a server you already have running).
+
+One-time setup (Node is pinned in [`mise.toml`](mise.toml)):
+
+```sh
+mise install node@22
+mise exec node@22 -- npm install
+mise exec node@22 -- npx playwright install chromium
+```
+
+**Regression testing** — compares every page/viewport against committed
+baselines and fails on any pixel difference (writing a diff image under
+`test-results/`):
+
+```sh
+mise exec node@22 -- npm run test:visual          # check against baselines
+mise exec node@22 -- npm run test:visual:update   # accept intended changes
+mise exec node@22 -- npm run report               # open the HTML diff report
+```
+
+Baselines live in [`tests/visual.spec.ts-snapshots/`](tests/visual.spec.ts-snapshots/)
+and are committed. They are platform-specific (filenames end in `-darwin`); run
+`:update` once on each platform that runs the suite.
+
+**Screenshots** — dumps clean, full-page PNGs to `screenshots/<viewport>/<page>.png`
+for eyeballing a redesign (this directory is gitignored):
+
+```sh
+mise exec node@22 -- npm run screenshots
+```
+
 ## Writing a post
 
 ```sh
