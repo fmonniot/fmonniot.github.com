@@ -119,15 +119,19 @@ description: One-sentence summary.    # the "dek" under the title; also <meta>
 ---
 ```
 
-**Captioned code blocks** — label a fenced block with a `code-title` paragraph
-immediately above it; it renders as the design's caption strip joined to the
-code. Syntax highlighting is automatic (Rouge, dark theme):
+**Captioned code blocks** — wrap a fenced block in a `figure.codeblock` with a
+`<figcaption>` (typically a filename or context label); it renders as the
+design's caption strip joined to the code. The `markdown="1"` attribute lets
+kramdown process the fence inside the HTML block. Syntax highlighting is
+automatic (Rouge, dark theme):
 
 ````markdown
-<p class="code-title">/etc/nginx/nginx.conf</p>
+<figure class="codeblock" markdown="1">
+<figcaption>/etc/nginx/nginx.conf</figcaption>
 ```nginx
 server { listen 80; }
 ```
+</figure>
 ````
 
 ## Generating the résumé PDF
