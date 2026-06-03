@@ -16,6 +16,8 @@ exclude:
   - screenshots
   - playwright-report
   - test-results
+  - README.md
+  - mise.toml
 
 include:
   - .well-known
