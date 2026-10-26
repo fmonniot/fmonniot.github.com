@@ -18,7 +18,7 @@ brew install mise libyaml      # libyaml is needed to compile Ruby's psych
 mise install ruby@3.3          # builds Ruby 3.3 (compiles from source)
 ```
 
-`rake resume` (PDF export) additionally needs the `wkhtmltopdf` binary — see
+`rake resume` (PDF export) additionally needs Google Chrome or Chromium installed — see
 [Generating the résumé PDF](#generating-the-résumé-pdf) below.
 
 ## Install
@@ -67,7 +67,8 @@ mise exec node@22 -- npx playwright install chromium
 ```
 
 **Regression testing** — compares every page/viewport against committed
-baselines and fails on any pixel difference (writing a diff image under
+baselines and fails when more than 1% of pixels differ (`maxDiffPixelRatio` in
+[`playwright.config.ts`](playwright.config.ts); a diff image is written under
 `test-results/`):
 
 ```sh
@@ -143,18 +144,22 @@ server { listen 80; }
 ## Generating the résumé PDF
 
 The résumé content is **content-generated** from
-[`_data/resume.yml`](_data/resume.yml) — edit it there once and both the on-site
-résumé (`/resume/`) and the print page (`/resume-print/`) update.
+[`_data/resume.yml`](_data/resume.yml) — edit it there once and the résumé page
+(`/resume/`) updates. The same page carries its own print styles
+(`@media print` in [`css/styles.scss`](css/styles.scss)), so there is no separate
+print page.
 
-The published PDF is rendered from the print page:
+The published PDF is rendered from `/resume/`. Build the site first, then:
 
 ```sh
-mise exec ruby@3.3 -- bundle exec rake resume   # _site/resume-print/index.html → docs/resume_francois_monniot.pdf
+mise exec ruby@3.3 -- bundle exec jekyll build
+mise exec ruby@3.3 -- bundle exec rake resume   # _site/resume/index.html → docs/resume_francois_monniot.pdf
 ```
 
-This requires the `wkhtmltopdf` binary on your `PATH`. It is deprecated and no
-longer in Homebrew core; installing it is non-trivial on recent macOS. See
-[FOLLOWUPS.md](FOLLOWUPS.md) for a planned replacement.
+`rake resume` serves `_site` through a throwaway WEBrick server and prints the page
+with headless Google Chrome (or Chromium), so one of them must be installed. The
+generic `rake pdf file="_site/<page>/index.html" name="<output-basename>"` task does
+the same for any built page.
 
 ## Project layout (the content-generated bits)
 
@@ -162,14 +167,23 @@ longer in Homebrew core; installing it is non-trivial on recent macOS. See
 | --- | --- |
 | [`_config.yml`](_config.yml) `profile:` | Sidebar identity: name, role, status, bio, location, GitHub, split email |
 | [`_data/nav.yml`](_data/nav.yml) | Sidebar navigation + numbering |
-| [`_data/resume.yml`](_data/resume.yml) | Résumé content (jobs, skills, education, languages) — single source for `/resume/` and `/resume-print/` |
+| [`_data/resume.yml`](_data/resume.yml) | Résumé content (jobs, skills, education, languages) — single source for `/resume/` |
 | [`_layouts/default.html`](_layouts/default.html) | Sidebar shell + `<head>` + email-deobfuscation script |
 | [`_layouts/post.html`](_layouts/post.html) | Article layout (kicker, dek, read-time byline, prose) |
-| [`css/styles.scss`](css/styles.scss) | The whole "Spine" design + dark code theme |
+| [`css/styles.scss`](css/styles.scss) | The whole "Spine" design + dark code theme + print styles |
+| [`_plugins/fingerprint.rb`](_plugins/fingerprint.rb) | Renames the compiled stylesheet to `styles-<hash>.css` and exposes it as `site.css_path` |
 
 The email address is split across `email_user` / `email_domain` and reassembled
-client-side (anti-scraping); the print page uses a plain `mailto:` so the PDF is
+client-side (anti-scraping); the résumé's print header uses a plain `mailto:` so the PDF is
 readable.
+
+## Stylesheet fingerprinting
+
+The site sits behind Cloudflare, which caches CSS for hours under a fixed filename, so
+a redesign could ship correct HTML while the old stylesheet lingered at the edge. To
+avoid that, [`_plugins/fingerprint.rb`](_plugins/fingerprint.rb) hashes
+`css/styles.scss` and serves the compiled CSS as `/css/styles-<hash>.css`. Layouts must
+link `{{ site.css_path }}` rather than a hardcoded `/css/styles.css`.
 
 ## Deployment
 
